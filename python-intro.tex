@@ -1,0 +1,861 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amssymb}
+
+%~ \usepackage{enumerate}
+\usepackage{enumitem}
+%~ \usepackage[margin=1in]{geometry}
+\usepackage{geometry}
+
+\usepackage{color}
+\definecolor{gray}{rgb}{0.8, 0.8, 0.8}
+\definecolor{deepgreen}{rgb}{0.156, 0.43, 0}
+
+\usepackage{listings}
+
+\lstset{
+language=Python,
+basicstyle=\ttfamily,
+keywordstyle=\bfseries,
+tabsize=4,
+numbers=left,
+numberblanklines=false,
+showstringspaces=false,
+keepspaces,
+keywordstyle=\color{blue},
+stringstyle=\color{deepgreen}
+}
+
+\lstset{
+literate={ą}{{\c a}}1
+{ć}{{\' c }}1
+{ę}{{\c e }}1
+{ł}{{\l}}1
+{ń}{{\'n}}1
+{ó}{{\'o}}1
+{ś}{{\'s}}1
+{ź}{{\'z}}1
+{ż}{{\.z}}1
+}
+
+\usepackage{polski}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+
+% makro nadające tło 'gray' tekstowi podanemu jako parametr - stara wersja
+% \newcommand{\important}[1]{\colorbox{gray}{\begin{minipage}[t]{\linewidth}#1\end{minipage}}}
+
+% \newcommand{\important}[1]{\colorbox{gray}{\parbox[t]{0.9\linewidth}{#1}}}
+
+\newcommand{\important}[1]{
+    \begin{center}\colorbox{gray}{
+        \begin{minipage}[t]{0.9\textwidth}{#1}
+        \end{minipage}
+    }
+    \end{center}
+}
+
+\newcommand{\kwords}[1]{\begin{center}\colorbox{gray}{\parbox{0.9\textwidth}{\textbf{Słowa kluczowe:} \emph{#1}}}\end{center}\vspace{1eM}}
+
+\newcommand{\key}[1]{\textbf{#1}}
+
+%~ \usepackage[polish]{babel}
+%~ \selectlanguage{polish}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\title{Wprowadzenie do języka Python}
+%~ \author{Wojciech Świderski}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+%~ Znaczy to, że można pisać w nim programy komputerowe. Ale co to jest program
+
+\section{Python}
+Python jest językiem programowania. Znaczy to, że posługując się Pythonem można pisać programy komputerowe. Program komputerowy to po prostu zestaw instrukcji dla procesora, które ten wykonuje. Posługując się Pythonem, możemy zatem zmusić procesor, a tym samym system komputerowy, do wykonywania określonych działań.
+
+Python jest językiem ogólnego przeznaczenia -- można w nim pisać programy o naprawdę szerokiej gamie zastosowań: serwisy internetowe, edytory tekstu, aplikacje do przetwarzania multimediów, programy z zakresu sztucznej inteligencji, czy wreszcie gry komputerowe.
+
+Oczywiście, w niektórych z tych zastosowań Python sprawdza się lepiej, w innych gorzej.
+
+
+Python jest językiem wysokiego poziomu -- z grubsza znaczy to tyle, że droga od poleceń napisanych w Pythonie do instrukcji procesora jest długa. Jedna instrukcja Pythona może przekładać się na dziesiątki instrukcji niskiego poziomu. W zamian otrzymujemy język, którego składania jest zbliżona do naturalnego języka angielskiego, co pozwala szybko rozpocząć przygodę z programowaniem.
+
+Python jest językiem interpretowanym -- znaczy to, że
+
+
+\subsection{Skąd wziąć Pythona}
+
+Z internetu. Poniżej kilka wybranych źródeł.
+
+\important{Zanim zaczniesz coś robić, przeczytaj podrozdział \emph{Edytor \texttt{Thonny}}.}
+
+\begin{enumerate}
+  \item Dobrym źródłem jest witryna \emph{Python Software Foundation}, która zajmuje się tworzeniem i rozwojem Pythona. Jej adres internetowy to \url{https://www.python.org}. Stąd zawsze można pobrać najnowszą wersję Pythona, obecnie ma ona numer \texttt{3.11}. Dostępne są dystrybucje dla różnych systemów operacyjnych.
+  \item Bardzo dobrą dystrybucją jest \emph{Anaconda}, dostępna pod adresem \url{https://www.anaconda.com}. Jest to dystrybucja opracowana pod kątem zastosowań \emph{stricte} naukowych i zawiera wiele bibliotek, które w innych przypadkach trzeba instalować samodzielnie. Z drugiej strony, liczba bibliotek może przytłaczać początkującego, który i tak nigdy z nich nie skorzysta. Tu również są dostępne wersje dla różnych systemów operacyjnych.
+  \item Microsoft oferuje własną dystrybucję. Siłą rzeczy dostępna jest ona tylko dla systemu Windows i w chwili pisania tego tekstu wciąż jest w fazie prób i nie jest to wersja najnowsza.
+  \item IPython (\url{www://ipython.org}) jest częścią Jupyter Project (\url{https://www.jupyter.org}), środowiska które umożliwia uruchamianie Pythona w przeglądarce internetowej. IPython oferuje rozbudowaną wersję powłoki o dużych możliwościach.
+  \item Jeżeli pracujesz w systemie Linux, na pewno jest już w nim dostępna jakaś wersja Pythona, bowiem część skryptów inicjujących Linuxa napisanych jest w Pythonie i wymaga wcześniejszej jego instalacji. Prawie na pewno będzie to wersja \texttt{3.9} lub nowsza -- nawet konserwatywny Debian ma w wersji \texttt{Bullseye} wersję \texttt{3.9}.
+
+\end{enumerate}
+
+\subsection{Interpreter}
+
+Praca z Pythonem odbywa się za pośrednictwem powłoki. Jest to program, który przyjmuje polecenia Pythona wpisywane z klawiatury, a następnie je wykonuje. Powłoka bardzo przypomina wiersz poleceń systemu Windows lub powłokę (shell) systemu Linux, różnica polega właśnie na innym zestawie poleceń.
+
+Powłoka zawiera interpreter Pythona.
+
+\subsection{Edytor tekstu}
+Do efektywnego programowania potrzebny będzie edytor tekstu. Teoretycznie dowolny program można napisać wyłącznie w powłoce, w praktyce jest to niewygodne już w przypadku ,,programów'' dłuższych niż kilka linii kodu.
+
+Edytor tekstu pozwala zapisać program, wrócić do niego za jakiś czas, podzielić na kilka części.
+
+Edytor tekstu -- to aplikacja w rodzaju \texttt{Notatnika}, która zapisuje sam tekst, bez żadnych dodatkowych informacji o czcionkach, kolorach, wymiarach kartki papieru, wielkości wcięć i tak dalej. W internecie jest dostępnych wiele dobrych i darmowych edytorów dla różnych systemów operacyjnych. Każdy z nich oferuje więcej funkcji niż windowsowy \texttt{Notatnik}.
+
+Jeszcze lepiej korzystać z tak zwanego \emph{zintegrowanego środowiska programistycznego}\footnote{ang. IDE od \emph{Integrated Development Environment}}, które łączy w sobie wiele funkcji i nie tylko umożliwia pisanie kodu, ale również śledzenie jego wykonywania, wykrywanie błędów, czy korzystanie z systemu kontroli wersji. Z wymienionych wyżej dystrybucji Pythona każda (za wyjątkiem Microsoftu) dostarczana jest z jakimś środowiskiem IDE.
+
+
+\subsection{Edytor \texttt{Thonny}}
+My będziemy korzystali z prostego środowiska \texttt{Thonny}, które jest w zupełności wystarczające dla początkującego programisty. Aplikację  należy ściągnąć z internetu i zainstalować -- wraz z programem instaluje się również współpracująca z nim wersja Pythona, nie trzeba więc wcześniej instalować Pythona samemu. W chwili pisania tego tekstu jest to Python 3.10.
+
+GRAFIKA - WYŚRODKOWAĆ % // ILUSTRACJA Z SUDOKU
+%~ \includegraphics[width=18cm]{thonny}
+
+Możliwe jest korzystanie z instalacji Pythona niezależnej od \texttt{Thonny'ego}, ale w tej chwili są to zagadnienia drugorzędne.
+
+\important{Od początku ucz się skrótów klawiaturowych, które wywołują polecenia środowiska \texttt{Thonny}. Jest to znacznie szybsze niż posługiwanie się myszą i odróżnia zawodowca od amatora.}
+
+Przez większość czasu okno programu podzielone jest na dwie części: okno edytora, aktywowane skrótem \texttt{Alt-E}, oraz okno interpretera Pythona (powłoki Pythona), aktywowane skrótem \texttt{Alt-S}.
+
+Praca wygląda tak, że w oknie edytora pisze się program, a uruchamiany jest on w powłoce po naciśnięciu klawisza \texttt{F5}. W powłoce można pracować niezależnie od edytora. Po wywołaniu programu dostępne są w niej wszystkie zmienne utworzone podczas jego pracy, co jest wygodne.
+
+\section{Pierwszy program. Funkcja \texttt{print()}}
+
+Nauczyć się czegokolwiek można tylko robiąc to. Napiszmy więc pierwszy program w języku Python; tradycja nakazuje, by program taki wyświetlał na ekranie tekst:
+
+\texttt{Witaj, świecie!}
+
+Kod źródłowy programu w Pythonie, który to realizuje jest następujący:
+
+\lstinline|print("Witaj, świecie!")|.
+
+Wpisz ten tekst w oknie edytora \texttt{Thonny} i naciśnij \texttt{F5}.
+
+\important{Przed \emph{pierwszą} próbą uruchomienia programu środowisko \texttt{Thonny} poprosi o podanie nazwy pliku, w którym ma zapisać kod źródłowy. Wystarczy podać nazwę, rozszerzenie \texttt{.py} zostanie dodane automatycznie. Podczas kolejnych prób zapis kodu odbywa się bez ingerencji użytkownika.}
+
+Wynik działania programu wyświetli się w powłoce w dolnej części okna.
+
+GRAFIKA
+
+
+%~ \important{No dobrze, ale przecież \emph{prawdziwe} aplikacje tak nie działają! Nie uruchamia się ich w jakiejś powłoce, tylko klika myszą na ikonie\dots Spokojnie, dojdziemy i do tego, ale jeśli jesteś niecierpliwy, zajrzyj do dodatku A} -- HYPERREF
+
+Całe zadanie realizuje \emph{funkcja} \lstinline|print()|. Czym jest funkcja? Jest to osobny program, który ma swoją nazwę i przeznaczony jest do realizacji specyficznych zadań\footnote{Nietrudno się domyślić, że funkcji \lstinline|print()| jest wyświetlanie przekazanych jej argumentów na ekranie monitora\dots}. Myśl o funkcjach jako narzędziach, z których możesz korzystać. Później nauczysz się pisać własne funkcje i grupować je w \emph{biblioteki}.
+
+Funkcji \lstinline|print()| przekazany został \emph{argument} \texttt{"Witaj, świecie!"}. Argument ten jest tekstem --- Python rozpoznaje to po cudzysłowach. Każdy tekst w Pythonie \emph{musi} być ujęty w cudzysłów --- może to być cudzysłów podwójny lub pojedynczy (z apostrofów). Dla Pythona nie ma to znaczenia, choć może mieć znaczenie dla nas, szczególnie gdybyśmy używali tekstów w języku angielskim. Na przykład, próba wyświetlenia tekstu \texttt{'I'm going to learn Python'} nie powiedzie się, bo Python uzna, że tekst kończy się już po \texttt{"I"}. Można z tego wybrnąć w różny sposób --- najprościej jednak użyć cudzysłowu podwójnego: \texttt{"I'm going to learn Python"}. W dalszym ciągu będę konsekwentnie używał cudzysłowu podwójnego.
+
+Funkcja \lstinline|print()| akceptuje dowolnie wiele wiele argumentów, inna wersja programu realizująca nasze zadanie mogłaby wyglądać tak:
+
+\lstinline|print("Witaj,", "świecie!")|$\ \to\ $ \texttt{Witaj, świecie!}
+
+\important{Za pomocą strzałki będę wskazywał, co zostanie wyświetlone w konsoli.}
+
+Funkcja \lstinline|print()| domyślnie wyświetla kolejne argumenty jeden obok drugiego, oddzielając je pojedynczymi odstępami\footnote{Jest to domyślne działanie funkcji. Aby je zmienić, zajrzyj do opisu funkcji \texttt{print()} w dodatku C.}.
+
+\lstinline|print()| akceptuje również liczby:
+
+\lstinline|print(1, 2, 3)|$\ \to\ $\texttt{1 2 3}
+
+\section{Interakcja z programem}
+
+Funkcja \lstinline|print()| to jedna część połączenia \textsf{program}$\ \leftrightarrow\ $\textsf{użytkownik}. Drugą część tworzy funkcja \lstinline|input()| która pozwala wprowadzać użytkownikowi dane, wykorzystywane przez program.
+
+Następujący program:
+
+\begin{lstlisting}
+imie = input("Podaj swoje imię: ")
+print(f"Twoje imię to {imie}.")
+\end{lstlisting}
+
+\begin{enumerate}[label={\arabic*}.]
+  \item Wyświetla zachętę dla użytkownika: \texttt{Podaj swoje imię: } i oczekuje, że w odpowiedzi użytkownik wprowadzi tekst zakończony znakiem końca wiersza (co sprowadza się do naciśnięcia \texttt{Enter}).
+  \item Po wprowadzeniu danych przez użytkownika (załóżmy, że ten podał imię ,,Ewa''), wyświetla na ekranie tekst \texttt{Twoje imię to Ewa.}.
+\end{enumerate}
+
+Przyjrzyjmy się temu programowi nieco dokładniej.
+
+\begin{enumerate}[label=ad. {\arabic*}]
+  \item
+        W wierszu (1) utworzyliśmy \emph{zmienną} \texttt{imie} i przypisaliśmy jej jako wartość tekst, który użytkownik wprowadził z klawiatury. Za tworzenie zmiennej odpowiada \emph{instrukcja przypisania}, zapisywana w Pythonie znakiem \texttt{=}.
+
+        Czym jest zmienna? W Pythonie jest to po prostu nazwa, którą przypisujemy danemu obiektowi (liczbie, tekstowi lub innej strukturze) po to, by go zapamiętać i móc nim operować. Gdy obiekt zostanie zapamiętany pod konkretną nazwą, można się do niego odwoływać właśnie za jej pomocą.
+
+        Nazwa zmiennej może być, w granicach rozsądku, w zasadzie dowolna. Wystarczy pamiętać, że:
+
+        \begin{enumerate}[label=--]
+          \item Małe i duże litery się różnią --- dlatego \texttt{Imie} oraz \texttt{imie} to różne zmienne.
+          \item W nazwach zmiennych nie może być spacji, ani znaków przestankowych. Zamiast spacji można używać znaku \texttt{\_}.
+          \item W nazwach zmiennych mogą wystąpić cyfry --- jednak nie na początku nazwy.
+          \item Nazwa zmiennej nie może być \emph{słowem kluczowym} Pythona\footnote{Słowa kluczowe to słowa oznaczające konstrukcje podstawowe dla języka, na przykład instrukcje. Ich lista dostępna jest w internecie.}.
+        \end{enumerate}
+
+        %and, as, assert, break, class, continue, def, del, elif, else, except, False, finally, for, from, global, if, import, in, is, lambda, None, nonlocal, not, or, pass, raise, return, True, try, while, with, yield
+
+        Kilka przykładów poprawnych i niepoprawnych nazw zmiennych:
+        \begin{enumerate}[label=--]
+          \item \textbf{Poprawne:} \texttt{k2}, \texttt{l\_}, \texttt{Moja\_Nazwa}, \texttt{spis\_uczniów}, \texttt{\_}
+          \item \textbf{Niepoprawne:} \texttt{2k}, \texttt{moja-nazwa}, \texttt{3-liczby}, \texttt{Zła nazwa}, \texttt{uwaga!}, \texttt{False}, \lstinline|while| (ostatnie dwie nazwy to przykłady słów kluczowych).
+        \end{enumerate}
+
+        Zwróćmy uwagę na ostatnią zmienną w wierszu poprawnych: \texttt{\_}. Zmienna o tej nazwie jest często stosowana w sytuacjach, gdy ze względu na składnię Pythona jakaś zmienna wystąpić \emph{musi}, a jednocześnie jej wartość  nie jest dla nas istotna (i najchętniej byśmy ją zignorowali)\footnote{Również interpreter Pythona korzysta ze zmiennej \texttt{\_} --- tworzy ją automatycznie i przechowuje w niej wynik ostatniej operacji.}.
+
+        Zmienną można utworzyć w dowolnym miejscu programu, a jako wartość można przypisać jej dowolny obiekt, jaki da się zbudować zgodnie ze składnią Pythona. W zależności od rodzaju tego obiektu mówimy, że ma ona określony \emph{typ}\footnote{Słowa ,,obiekt'' używamy tu w sposób nieformalny. Więcej o obiektach później.}. Podstawowe typy danych zestawia tabela; poznasz je dokładniej w miarę lektury.
+
+        \texttt{
+          \begin{tabular}{lll}
+            int      & 124, -3                                & liczby całkowite      \\
+            float    & 3.14, -2.0, 11.574738                  & liczby rzeczywiste    \\
+            string   & "Ewa", "Pójdź, kińże tę chmurność..."  & teksty                \\
+            list     & [0, 1, 2], [1, [2, "trzy"], 4.5]       & listy                 \\
+            dict     & \{"ja": 12, "ty": -10, 4: "farfocel"\} & słowniki              \\
+            tuple    & (1, 2), ("Anna", "Nowak", 12)          & krotki                \\
+            set      & \{'a', 'b', 'c'\}                      & zbiory                \\
+            bool     & True, False                            & wartości logiczne     \\
+            NoneType & None                                   & unikalna wartość None \\
+          \end{tabular}
+        }
+
+        Zauważ, że dla zapisu liczb rzeczywistych używamy kropki, a nie przecinka dziesiętnego. Jest to konwencja powszechnie przyjmowana w informatyce.
+
+        Chcąc sprawdzić, jakiego typu jest dana zmienna, wystarczy w interpreterze wydać polecenie \lstinline|type(zmienna)|. Odpowiedzią zawsze będzie tekst w rodzaju \lstinline|<class '...'>|, przy czym zamiast wielokropka pojawi się nazwa typu lub jej skrót.
+
+        \important{W przeciwieństwie do innych języków programowania, w Pythonie instrukcja przypisania każdorazowo tworzy \emph{nową zmienną}, nawet gdy wielokrotnie używasz tej samej nazwy. To ważny szczegół techniczny, jednak bez większego znaczenia dla użytkownika.}
+
+        W szczególności, z powyższego wynika, że jedna i ta sama zmienna może w różnych chwilach wykonania programu oznaczać wartości różnych typów. Jak najbardziej dopuszczalne są następujące przypisania, występujące w różnych częściach jednego programu, jak w poniższym fragmencie.
+
+        \lstset{numbers=none}
+        \begin{lstlisting}
+    a = 3
+    ...
+    a = "Ewa"
+    ...
+    a = [1, 2, -3]
+    \end{lstlisting}
+
+        I już ostatnia uwaga dotycząca zmiennych --- wskazane jest, by nazwa zmiennej w jakiś sposób opisywała obiekt, do którego się odnosi. Porównajmy dwa fragmenty kodu:
+
+        pierwszy
+
+        \begin{lstlisting}
+    e_mail = "jan.zielinski@xyz.org"
+    login = "jan"
+    ...
+    ...
+    if not login or not e_mail:
+        ...
+    \end{lstlisting}
+
+        i drugi
+
+        \begin{lstlisting}
+    a = "jan.zielinski@xyz.org"
+    b = "jan"
+    ...
+    ...
+    if not a or not b:
+        ...
+    \end{lstlisting}
+
+        Chyba nie trzeba nikogo przekonywać, który z nich jest bardziej czytelny.
+
+  \item Wiersz drugi odpowiedzialny jest za wyświetlenie komunikatu ze strony programu. Jak będzie wyglądał ten komunikat? Otóż funkcji \lstinline|print()| jako argument podany został tak zwany \emph{tekst formatowany}: \lstinline|f"Twoje imię to {imie}."|. Tekst formatowany różni się od ,,zwykłego'' tekstu tym, że \emph{może} zawierać (i na ogół zawiera) miejsca, wymagające interpretacji. Miejsca te oznaczamy nawiasami klamrowymi \texttt{\{\}}, a wewnątrz nich podajemy wyrażenie, które Python ma zinterpretować. W naszym przypadku jest to zwykła zmienna \texttt{imie}, która zostanie zastąpiona stosownym tekstem (wartością tej zmiennej), ale w innych sytuacjach mogą to być zupełnie złożone wyrażenia. Na przykład, f-tekst \lstinline|f"Wynik = {3 * pow(2, 4) - 2 * ceil(3.14)}"| po zintrepretowaniu da w rezultacie tekst następujący: \texttt{Wynik = 40}.
+
+        Bardziej złożony przykład. Poniższy kod:
+
+        \lstset{numbers=none}
+        \begin{lstlisting}
+wynik = 3.2785
+miejsce = 2
+imie = "Ewa"
+
+print(f"{imie}: wynik {wynik:-^10.2f} pkt., miejsce {miejsce}")
+\end{lstlisting}
+
+        wyświetli następujący komunikat:
+
+        \lstinline|Ewa: wynik ---3.28--- pkt., miejsce 2|
+
+        Podstawienia \texttt{imie} oraz \texttt{miejsce} powinny być jasne, dlatego omówię jedynie podstawienie \lstinline{wynik:-\^10.2f}. Krótko: ,,na wyświetlenie \texttt{wynik} masz 10 miejsc, z czego 2 na część ułamkową; całość wyśrodkuj w obrębie tych 10 miejsc, a niewykorzystane miejsca wypełnij kreskami''. Widać, że wyświetlając tekst zgodnie z tą specyfikacją Python dokonał zaokrąglenia części ułamkowej do dwóch miejsc po przecinku.
+
+        Zgodnie z uwagami w punkcie 1. powyżej, możliwe jest przypisanie:
+
+        \lstinline|s = f"{imie}: wynik {wynik:-\^10.2f} pkt., miejsce {miejsce}"|
+
+        i wówczas tekst \texttt{s} będzie miał taką postać, jaka została wyświetlona.
+
+        Więcej szczegółów na temat formatowania f-tekstów w \hyperref[dodatek-B]{dodatku B}.
+
+\end{enumerate}
+
+\section{Przykład: BMI}
+
+\emph{Body Mass Index} jest wskaźnikiem, który w przypadku osób dorosłych pomaga stwierdzić zagrożenie chorobami związanymi z nadwagą. Przyjmuje się, że dla osoby dorosłej właściwa wartość BMI powinna mieścić się w przedziale $18{,}5$--$24{,}99$. Napiszemy program, który oblicza BMI. Program będzie pytał użytkownika o jego wzrost i wagę, a po wyliczeniu BMI wyświetli stosowny komunikat.
+
+\lstset{numbers=left}
+\begin{lstlisting}
+print("Obliczanie BMI")
+print(50 * "-")
+
+waga = input("Podaj swoją wagę w kg: ")
+waga = float(waga)
+
+wzrost = input("Podaj swój wzrost w cm: ")
+wzrost = float(wzrost)
+
+# Potrzebny jest wzrost w metrach
+wzrost = wzrost / 100
+
+# bmi = (waga w kg) / (wzrost w m)^2
+bmi = waga / wzrost**2
+
+print(f"Twój BMI wynosi: {bmi:.2f}")
+\end{lstlisting}
+\label{int-oraz-float}
+
+Kilka spraw wymaga wyjaśnienia. W wierszu (4) zmiennej \texttt{waga} przypisujemy tekst wczytany z klawiatury. Oczywiście, naszym zamiarem jest podać odpowiednią liczbę, jednak Python nie może tego wiedzieć i zakłada, że \emph{wszystko}, co wpisujemy z klawiatury, jest tekstem, \emph{niezależnie} od naszych intencji. Ponieważ znamy tę cechę Pythona, w wierszu (5) dokonujemy konwersji tekstu \texttt{waga} na liczbę rzeczywistą za pomocą funkcji \lstinline|float()|. Oczywiście, żeby konwersja się powiodła, wprowadzony tekst musi poprawnie reprezentować liczbę rzeczywistą. Konwersję tekstu na liczbę całkowitą realizuje funkcja \lstinline|int()|. Są to sprawy ważne, dlatego powtórzę je raz jeszcze.
+
+\important{
+  Funkcja \texttt{input()} \textbf{zawsze zwraca tekst}. Nawet, gdy wpisujesz coś, co Twoim zdaniem jest liczbą, to i tak jest to tekstem, a ściślej tekstową reprezentacją tej liczby. Dlatego wprowadzony tekst należy zamienić --- przekonwertować --- na liczbę. W zależności od tego, czy chcesz otrzymać liczbę całkowitą, czy rzeczywistą, do konwersji używa się funkcji \texttt{int()} lub \texttt{float()}.}
+
+Wiersz (10) rozpoczyna się od znaku \texttt{\#} --- w ten sposób sygnalizujemy, że wszystkie następne znaki, aż do końca wiersza, tworzą \emph{komentarz}. Komentarz nie jest częścią kodu, wykonując program Python pomija wszystkie komentarze, jednak dobrze napisany program, to program opatrzony właściwymi komentarzami we właściwych miejscach. Komentarz ma za zadanie objaśnić kod i sprawić, by był łatwiejszy do zrozumienia. W naszym przykładzie za pomocą komentarza wyjaśniamy dlaczego \texttt{wzrost} jest dzielony przez \texttt{100} --- ma to sens, bo oczekujemy wzrostu podanego w centymetrach, a wzór na BMI wymaga wzrostu wyrażonego w metrach.
+
+W wierszu (14) obliczamy \texttt{bmi}, a wiersz (11) wyświetla BMI z dokładnością do dwóch miejsc dziesiętnych wykorzystując f-tekst.
+
+\subsection{Rozbudowa programu. Pętla \texttt{while}}
+
+Rozbudujemy nieco nasz program. Obecnie noblicza on BMI pojedynczej osoby i kończy pracę. Chcielibyśmy, by obliczał BMI kolejnych osób, a pracę kończył dopiero na nasze żądanie. W tym celu cały kod z wierszy (1)--(11) zamkniemy w \emph{pętli}. Pętla to instrukcja, która umożliwia wykonywanie zespołu innych instrukcji tak długo, jak długo spełniony jest pewien warunek. W Pythonie są dwa rodzaje pętli: \lstinline|while| oraz \lstinline|for|. Pętla \lstinline|while| ma ogólną postać:
+
+\lstset{numbers=none}
+\begin{lstlisting}
+while (spełniony jest pewien warunek logiczny):
+    wykonuj sekwencję instrukcji
+    ...
+    ...
+\end{lstlisting}
+
+UWAGA - PODKREŚL ZNACZENIE WCIĘĆ
+
+Wszystko jest tutaj ważne --- dwukropek po warunku logicznym kończący wiersz i wcięcie \emph{bloku pętli}, czyli zestawu instrukcji w niej wykonywanych (może to być pojedyncza instrukcja). Jest to charakterystyczna cecha składni Pythona i każde odstępstwo od niej (na przykład różna głębokość wcięć dla różnych instrukcji w bloku pętli) jest błędem sygnalizowanym przez interpreter.
+
+Warunek logiczny steruje wykonaniem pętli --- \textbf{przed} wykonaniem bloku instrukcji pętli Python sprawdza, czy warunek logiczny jest prawdziwy. Jeżeli tak, wykonywane są kolejne instrukcje bloku; w przeciwnym wypadku sterowanie od razu przekazywane jest do instrukcji następujących w kodzie programu po pętli.
+
+Oto zmodyfikowana wersja programu, obliczająca BMI w pętli.
+
+\lstset{numbers=left}
+\begin{lstlisting}
+print("Obliczanie BMI")
+print(50 * "-")
+
+odpowiedz = "t"
+
+while odpowiedz == "t":
+
+    waga = input("Podaj swoją wagę w kg: ")
+    waga = float(waga)
+
+    wzrost = input("Podaj swój wzrost w cm: ")
+    wzrost = float(wzrost)
+
+    # Potrzebny jest wzrost w metrach
+    wzrost = wzrost / 100
+
+    # bmi = (waga w kg) / (wzrost w m)^2
+    bmi = waga / wzrost**2
+
+    print(f"Twój BMI wynosi: {bmi:.2f}")
+
+    odpowiedz = input("Kontynuować (t/n)? ")
+\end{lstlisting}
+
+W odróżnieniu od poprzedniej wersji programu, która oblicza BMI użytkownika i kończy pracę, ta działa tak długo, aż użytkownik wyraźnie stwierdzi, że ma dość. W tym celu wprowadziliśmy zmienną \texttt{odpowiedz}, która uwikłana jest w warunek logiczny \lstinline|odpowiedz == "t"| --- sprawdzamy, czy wartość zmiennej \texttt{odpowiedź} jest równa \texttt{t}. Zauważ przy tym, że użyliśmy ,,podwójnego'' znaku równości, gdyż pojedynczy jest zarezerwowany dla instrukcji przypisania. Ponieważ początkową wartością \texttt{odpowiedz} jest \texttt{"t"}, mamy gwarancję, że blok instrukcji (8)--(22) wykona się przynajmniej raz. Wiersze (8)--(20) są wzięte z poprzedniej wersji programu, dodany został tylko wiersz (22). Program wyświetla tu stosowny monit i czeka na odpowiedź użytkownika, którą zapamięta w zmiennej \texttt{odpowiedz}. Ponieważ jest to ostatnia instrukcja bloku, pętla wróci do sprawdzania warunku logicznego. Każda odpowiedź użytkownika inna niż \texttt{t} spowoduje przerwanie pętli i zakończenie programu. Jest to niewątpliwa niedogodność, użytkownik może w odpowiedzi na monit napisać "T" lub po prostu nacisnąć \texttt{Enter} --- prawdopodobnie chcielibyśmy, by w tej sytuacji program działał nadal. Z drugiej strony, mało sensowna odpowiedź \texttt{"witaj"} również powoduje zakończenie pracy programu.
+
+\subsection{Instrukcja warunkowa}
+
+Wprowadzimy jeszcze jedną zmianę w programie. Chcemy, by program informował użytkownika, czy według wskaźnika BMI ma on nadwagę, niedowagę, czy też jego waga mieści się w normie. Zadanie to wykonamy za pomocą \emph{instrukcji warunkowej}, która pozwala na wykonywanie innych instrukcji w zależności od tego, czy testowany przez nią warunek logiczny jest spełniony, czy też nie. Po wierszu 20 naszego programu dopiszemy następujące wiersze:
+
+\begin{lstlisting}[firstnumber=20]
+    print(f"Twój BMI wynosi: {bmi:.2f}")
+
+    if bmi < 17 :
+        print("To zdecydowanie zbyt mało.")
+    elif 17 <= bmi < 18.5 :
+        print("To poniżej normy.")
+    elif 18.5 <= bmi <= 24.99 :
+        print("Idealnie!")
+    elif 24.99 < bmi <= 26:
+        print("Nieco powyżej normy! Uważaj!")
+    else:
+        print("Masz nadwagę!")
+    # koniec if
+    odpowiedz = input("Kontynuować (t/n)? ")
+\end{lstlisting}
+
+W wierszu (22) pojawiła się \emph{instrukcja warunkowa}, której ogólny schemat jest następujący:
+
+\lstset{numbers=none}
+\begin{lstlisting}
+if <warunek logiczny> :
+    blok instrukcji
+elif <warunek logiczny 2> :
+    blok instrukcji 2
+...
+else:
+    blok instrukcji ...
+\end{lstlisting}
+
+Jak to wszystko działa? Wyliczona wartość BMI została zapamiętana w zmiennej \texttt{bmi}. W wierszu (20) wartość ta jest wyświetlona na ekranie, a następnie w wierszu (22) instrukcja warunkowa sprawdza, czy spełniony jest warunek \lstinline|bmi < 17|. Jeżeli tak, wykonywana jest instrukcja z wiersza (23) (czyli wypisany jest kolejny komunikat) i na tym koniec --- program ,,skacze'' do wiersza (32) i kontynuuje pracę od wiersza (33) w dół.
+
+Jeżeli jednak warunek \lstinline|bmi < 17| nie jest spełniony, program pomija wiersz (23) i przechodzi do (24), w którym sprawdza z kolei, czy wartość \texttt{bmi} zawarta jest między \texttt{17} a \texttt{18.5} --- jeżeli tak, wyświetlany jest komunikat z wiersza (25), po czym następuje skok do wiersza (32) i kontynuacja programu.
+
+Jeżeli nie, program pomija wiersz (25) i przechodzi do wiersza (26) i \emph{ad nauseam}\ldots
+
+W końcu --- i tylko wtedy --- jeżeli żaden z warunków z wierszy (22), (24), (26), (28) nie jest spełniony, program wykonuje blok instrukcji zamieszczonych w części \lstinline|else| (w naszym przypadku sprowadza się to znów do wypisania stosownego komunikatu) i kontynuuje pracę od wiersza (33).
+
+Powinno to być jasne.
+
+Zwróćmy uwagę, jak zapisane zostały warunki z wierszy (24), (26) i (28). Po pierwsze, dla zapisu nierówności słabej $\leqslant$ lub $\geqslant$, używamy zbitki dwóch symboli: \texttt{<=} i odpowiednio \texttt{>=}. Po drugie, zamiast koniunkcji  \lstinline|bmi >= 17 and bmi < 18.5| użyliśmy powszechnie stosowanego w matematyce zapisu za pomocą nierówności podwójnej. Jest to wygodne.
+
+W zależności od problemu ciąg instrukcji \lstinline|elif| może być dość długi --- z zasady należy jednak unikać takich sytuacji.
+
+W praktyce często spotykamy prostszy wariant instrukcji warunkowej, z pominięciem części \lstinline|elif ... :|
+
+\lstset{numbers=none}
+\begin{lstlisting}
+if <warunek logiczny>:
+    blok instrukcji
+else:
+    blok instrukcji 2
+\end{lstlisting}
+
+a nawet bez części \lstinline|else:|. Wygląda ona wtedy na przykład tak:
+
+\lstset{numbers=none}
+\begin{lstlisting}
+if <warunek logiczny>:
+    blok instrukcji
+\end{lstlisting}
+
+\subsection{Zapamiętywanie wyników}
+
+Obecna wersja programu ogranicza się do wielokrotnego obliczania BMI. Pójdziemy teraz krok dalej i dodamy możliwość identyfikacji użytkownika, a następnie zapisania jego BMI na dysku.
+
+W tym celu w wierszu (3) programu wprowadzimy zmienną \texttt{pamiec}, która będzie przechowywała informacje o użytkownikach i ich BMI. Dodatkowo, jako pierwszą instrukcję w bloku \lstinline|while...| dodamy pytanie o imię użytkownika.
+
+\lstset{numbers=left}
+\begin{lstlisting}
+print("Obliczanie BMI")
+print(50 * "-")
+pamiec = {}
+odpowiedz = "t"
+
+while odpowiedz == "t":
+    imie = input("Podaj swoje imię: ")
+    ...
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=29]
+    ...
+    else:
+        print("Masz nadwagę!")
+    # koniec if
+    pamiec[imie] = bmie
+    odpowiedz = input("Kontynuować (t/n)? ")
+
+print(pamiec)
+\end{lstlisting}
+
+Co zmieniło się teraz? Wiersze (1)--(3) wzięte są z poprzedniej wersji. W wierszu (4) tworzymy zmienną \lstinline|pamiec| i przypisujemy jej jako wartość \emph{pusty słownik}. Za chwilę przekonasz się, że nie ma w tym nic tajemniczego, a posługiwanie się słownikami jest bardzo naturalne i nieskomplikowane. Więcej informacji o słownikach w \hyperref[slowniki]{rozdziale 5}.
+
+Wracamy do analizy programu --- po wejściu do pętli program pyta użytkownika o imię. Po obliczeniu BMI tego użytkownika jest ono w wierszu (33) zapamiętywane w słowniku pod kluczem \texttt{imie}.
+
+Po zakończeniu pracy w pętli \lstinline|while ...|, cały słownik przechowujący informacje o BMI użytkowników bieżącej sesji z programem jest wyświetlany na ekranie. Efekt będzie tego rodzaju:
+
+\texttt{\{'Anna': 19.4321, 'piotr': 32.312, 'Beata': 22.7162, 'ADAM': 24.86382,\newline 'ewa': 17.8723\}}
+
+Widać tutaj przykładowe imiona użytkowników, które zostały wprowadzone w wierszu (7) w odpowiedzi na monit ze strony programu i następnie użyte jako klucze w wierszu (33) oraz przypisane im wyliczone wartości BMI.
+
+Wykorzystanie słownika do zapamiętywania danych w naszym programie jest wygodne i naturalne. Wiąże się z tym jednak pewna niedogodność --- jeżeli kilku użytkowników ma to samo imię, to w wierszu (33) każdorazowo następuje zmiana wartości przypisanej temu imieniu--kluczowi i pamiętana jest tylko wartość BMI ostatniego użytkownika o tym imieniu. Użytkownicy o takich samych imionach powinni więc w jakiś sposób na ich rozróżnienie.
+
+\subsection{Zapis danych na dysku}
+
+Ostatnia funkcja, w którą wyposażymy program, to zapis wyników zapamiętanych w zmiennej \texttt{pamiec} na dysku. W tym celu po wierszu (36) dodamy następujące wiersze:
+
+\begin{lstlisting}[firstnumber=37]
+with open("bmi.txt", "tw") as plik:
+    for klucz, wartosc in pamiec.items():
+        plik.write(f"{klucz}->{wartosc:.2f}\n")
+\end{lstlisting}
+
+Wymaga to kilku słów wyjaśnienia.
+
+Przed wykonaniem jakichkolwiek operacji zapisu-odczytu na dysku, plik, na którym chcemy wykonać jedną z tych operacji, musi zostać \emph{otwarty}. Realizuje to funkcja \texttt{open()}, która wymaga jako argumentu nazwy pliku. Dodatkowo powinniśmy podać \emph{tryb}, w jakim plik ma być otwarty; domyślnie jest to tryb \emph{tylko do odczytu} oraz tryb \emph{plik tekstowy}. Tryb określamy za pomocą prostych kombinacji symboli podanych w tabeli, należy mieć jednak na uwadze, że niektóre kombinacje się wykluczają ().
+
+\begin{tabular}{l | l}
+\textsf{symbol} & \textsf{znaczenie} \\
+\hline
+\texttt{"r"} & do odczytu \\
+\texttt{"w"} & do zapisu; jeżeli plik już istnieje, zawartość zostanie usunięta \\
+\texttt{"x"} & wyłącznie utworzenie pliku; jeżeli plik już istnieje, operacja nie powiedzie się \\
+\texttt{"a"} & do zapisu; jeżeli plik istnieje, dane będą dopisywane na końcu \\
+\texttt{"b"} & otwarty jako plik binarny \\
+\texttt{"t"} & otwarty jako plik tekstowy (domyślnie) \\
+\texttt{"+"} & otwarty do uaktualniania (możliwy zapis i odczyt) \\
+\end{tabular}
+
+Jako tryb podaliśmy \texttt{"w"}, a tabela informuje nas, że domyślnie plik otwierany jest w trybie \texttt{"t"} --- będzie to zatem kombinacja \texttt{"tw"}, czyli plik otwierany jest jako tekstowy i do zapisu. Wynika stąd, że po każdorazowym uruchomieniu programu jego zawartość będzie zapisywana od nowa. Użytkownik traktujący nasz program poważnie, musi o tym pamiętać.
+
+Konstrukcja \lstinline|with ... as ...:| to tak zwany \emph{menedżer kontekstu}, szczególnie użyteczny podczas pracy z plikami. Zwalnia on programistę z wielu uciążliwych czynności\footnote{Plik, który został otwarty, musi po wykonaniu wszystkich czynności z nim związanych zostać zamknięty. Podczas wykonywania tych czynności może dojść do rozmaitych błędów, przez co plik pozostanie otwarty. Na ogół prowadzi to do utraty danych zapisanych w pliku. Menedżer kontekstu dba o to, by w każdej takiej sytuacji zamknąć plik.}, pozwalając skupić się na istocie problemu.
+
+\important{Ponieważ korzystanie z menedżera kontekstu \textbf{jest zalecane} podczas pracy z plikami, inne metody omówię zdawkowo w innym miejscu.}
+
+W naszym przypadku menedżer kontekstu otwiera w bieżącym katalogu plik tekstowy o nazwie \texttt{bmi.txt} w trybie do zapisu i wiąże z nim zmienną \texttt{plik}. Powinno być jasne, że nazwa zmiennej może być dowolna, użyliśmy nazwy \texttt{plik} bez żadnych intencji. Wszystkie operacje na pliku wykonywane są za pośrednictwem tej zmiennej. Ponadto, nazwa pliku może zawierać ścieżkę dostępu do pliku --- oczywiście użytkownik powinien mieć odpowiednie prawa dostępu do katalogu, który wskazał.
+
+UWAGA - PRZEPISAĆ?
+Blok menedżera kontekstu zawiera instrukcję pętli \lstinline|for|. Pętla \lstinline|for| pomyślana została do działania na obiektach \emph{iterowalnych} (ang. \emph{iterable}). Mówiąc krótko, są to obiekty, które w jakiś sposób pozwalają kolejno ,,pobierać'' przechowywane w tych obiektach elementy. W naszym przypadku takim obiektem jest obiekt dostarczany przez metodę \lstinline|items()| zmiennej \texttt{pamiec}. Metoda ta udostępnia kolejne elementy słownika w postaci par \texttt{klucz-wartość} --- pary te są przypisywane zmiennym \texttt{klucz} oraz \texttt{wartosc}, które następnie za pomocą metody \lstinline|write()| zmiennej \texttt{plik} zapisujemy do pliku. Znak \texttt{\\n} na końcu f-tekstu to symbol końca wiersza. Jest on konieczny, jeżeli chcemy, by każda para \texttt{klucz, wartosc} zapisana była w oddzielnym wierszu.
+
+\subsection{Więcej o pętli \texttt{for}}
+
+W dużym uproszczeniu, ale i nie popełniając wielkiego błędu, można przyjąć, że ,,nieproste'' obiekty Pythona są iterowalne.
+
+Schemat pętli \lstinline|for|:
+
+\lstset{numbers=none}
+\begin{lstlisting}
+for zmienna_sterujaca in obiekt_iterowalny:
+    blok
+    instrukcji
+    pętli
+\end{lstlisting}
+
+Rozważmy konkretny przykład. Ponieważ w Pythonie teksty są obiektami iterowalnymi (w naturalny sposób można pobierać kolejne \texttt{litery}) możemy rozważyć następujący przykład. Niech \lstinline|tekst = "Programowanie w Pythonie"|
+
+\lstset{numbers=none}
+\begin{lstlisting}
+licznik = 0
+for c in tekst:
+    if c == "a":
+        licznik = licznik + 1
+
+< dalsze instrukcje programu >
+\end{lstlisting}
+
+Jak to wszystko działa? Pętla pobiera po kolei litery tekstu \texttt{tekst} --- każdorazowo pobraną literę przechowuje w zmiennej sterującej \texttt{c}. Następnie przechodzi do wykonania bloku instrukcji pętli --- tutaj tworzy go pojedyncza instrukcja warunkowa, która sprawdza, czy znak zapamiętany w zmiennej \texttt{c} to \texttt{"a"}. Jeżeli tak, zwiększa o 1 wartość zmiennej licznik; jeżeli nie, nie podejmuje żadnych działań. Po wykonaniu bloku instrukcji następuje powrót do początku pętli i pobranie kolejnego znaku tekstu \texttt{tekst}. Gdy taka operacja jest już niemożliwa, pętla kończy działanie, a program zaczyna wykonywać dalsze instrukcje.
+
+Zwróćmy uwagę na wcięcia --- podobnie, jak w przypadku instrukcji \lstinline|while| oraz \lstinline|if ... elif:| są one konieczne. W dalszym ciągu nie będziemy już do tego wracali, zakładając że Czytelnik sam domyśli się tego na podstawie schematu instrukcji.
+
+\subsection{Pliki tekstowe}
+UWAGA O PLIKACH TEKSTOWYCH
+W poprzednim podrozdziale zapisywaliśmy dane do pliku tekstowego. Obecnie omówimy przykład odczytu danych z takiego pliku. Przyjmijmy, że na dysku mamy plik o nazwie \texttt{pomiary.csv}. Rozszerzenie nazwy sugeruje, że jest to plik tekstowy, w którym poszczególne wiersze zostały podzielone przecinkami na części tworzące logiczne kolumny \footnote{CSV - \emph{comma separated values}. W taki sposób czasem zapisuje się dane opracowywane w arkuszach kalkulacyjnych.}. Przyjmiemy, że poszczególne wiersze pliku mają następującą postać:
+\lstset{numbers=none}
+\begin{lstlisting}
+imię,nazwisko,wiek,kredyt,roczny_dochod
+xx,XXX,34,0,100000
+yyyy,YYYYY,28,1,150000
+aaa,AA,48,1,148000
+zz,ZZZZZ,30,0,200000
+ddd,DD,29,1,180000
+...
+\end{lstlisting}
+
+Jak czytać dane z takiego pliku? Za pomocą menedżera kontekstu otworzymy plik w trybie do odczytu i zwiążemy z nim zmienną. Następnie odwołamy się do jednej z metod tej zmiennej przeznaczonych do odczytu danych. Użyjemy też pętli \lstinline|for| do pobierania kolejnych wierszy. Załóżmy, że chcemy obliczyć ile osób ma zaciągnięty kredyt. Kod realizujący to zadanie mógłby wyglądać następująco:
+
+\lstset{numbers=left}
+\begin{lstlisting}
+kredyt_ile = 0
+with open("dane.csv", "r") as f:
+    f.readline()
+    for wiersz in f:
+        imie, nazwisko, wiek, kredyt, dochod = wiersz.rstrip().split(",")
+        kredyt_ile += int(kredyt)
+\end{lstlisting}
+
+Wiersze (1) i (2) nie wymagają omówienia. Ciekawszy jest wiersz (3): metoda \lstinline|readline()| zmiennej plikowej \texttt{f} odczytuje pojedynczy wiersz z pliku tekstowego i zwraca go jako wartość. Ponieważ wiersz nie zostaje zapamiętany w zmiennej, to po prostu ,,znika''. To celowe --- odczytany wiersz jest \emph{pierwszym} wierszem pliku, który nie zawiera istotnych danych, a jedynie opis poszczególnych kolumn (oddzielonych przecinkami). Pętla w wierszu (4) pobiera kolejny wiersz z pliku, który następnie w wierszu (5) jest ,,rozkładany na części''. Omówimy to dokładniej.
+
+Po prawej stronie instrukcji przypisania w wierszu (5) wywołujemy bespośrednio po sobie dwie metody zmiennej \texttt{wiersz}, która jest typu \lstinline|string| --- \lstinline|rstrip()| oraz \lstinline|split()|. Moglibyśmy rozbić wiersz (5) na dwa wiersze:
+\lstset{numbers=none}
+\begin{lstlisting}
+wiersz = wiersz.rstrip()
+imie, nazwisko, wiek, kredyt, dochod = wiersz.split(",")
+\end{lstlisting}
+
+ale zaprezentowany przez nas sposób jest preferowany w Pythonie.
+
+Działanie obu metod pokażemy na przykładzie pierwszego wiersza zawierającego dane:
+
+\texttt{xx,XXX,34,0,100000}
+
+Jak ,,naprawdę'' wygląda ten wiersz na dysku i jak jest zapamiętany w zmiennej \texttt{wiersz} po odczytaniu go przez Pythona? Otóż \emph{każdy wiersz} (za wyjątkiem, być może, ostatniego) pliku tekstowego zakończony jest znakiem nowego wiersza. Znak ten wpisywany jest za każdym razem, gdy }
+
+KONIEC - O PLIKACH TEKSTOWYCH
+
+\texttt{"xx,XXX,34,0,100000\n"}
+
+--- zwróć uwagę na znak \texttt{\n} końca wiersza na końcu tekstu zapamiętanego w zmiennej \texttt{wiersz}. Metoda \lstinline|rstrip()| usuwa z prawej strony tekstu
+%~ \footnote{,,right strip'' --- co sugeruje istnienie metody \texttt{lstrip()} ,,left strip'' usuwającej znaki z lewej strony tekstu. I słusznie. Istnieje też metoda \texttt{strip()} usuwająca jednocześnie znaku z obu stron.}
+znaki przekazane jako argument. Domyślnie usuwane są białe znaki: spacje, znaki tabulacji oraz znak końca wiersza i dlatego nie musieliśmy podawać metodzie żadnego argumentu. ,,Oczyszczony'' w ten sposób do postaci \texttt{"xx,XXX,34,0,100000"} tekst, zostaje przekazany metodzie \texttt{split()} wywołanej z argumentem \texttt{","} --- ,,rozcina'' ona \texttt{wiersz} ,,wzdłuż'' przecinków i zwraca \emph{listę} ,,fragmentów'', na które tekst został ,,pocięty'' (\emph{lista} to kolejna struktura danych dostępna w Pythonie --- omówimy ją szerzej w następnym rozdziale). Lista ta ma postać \texttt{['xx', 'XXX', '34', '0', '100000']} i ostatecznie ona właśnie występuje po prawej stronie instrukcji przypisania w wierszu (5) naszego kodu.
+
+To, co dzieje się po lewej stronie, to \emph{rozpakowanie} --- pięciu elementom \texttt{imie}, \texttt{nazwisko}, \texttt{wiek}, \texttt{kredyt}, \texttt{dochod} przypisywane są kolejne elementy listy \texttt{['xx', 'XXX', '34', '0', '100000']}. Po tym zabiegu będziemy mieli następujące zmienne:
+\label{zapis-do-pliku}
+
+\begin{enumerate}
+  \item \texttt{imie}$\ \to\ $\texttt{"xx"}
+  \item \texttt{nazwisko}$\ \to\ $\texttt{"XXX"}
+  \item \texttt{wiek}$\ \to\ $\texttt{"34"}
+  \item \texttt{kredyt}$\ \to\ $\texttt{"0"}
+  \item \texttt{dochod}$\ \to\ $\texttt{"100000"}
+\end{enumerate}
+
+Wreszcie, wiersz (6) sprawia, że zmienna \texttt{kredyt\_ile} będzie zwiększana
+o wartość 1 (funkcja \lstinline|int()| pojawiła się \hyperref[int-oraz-float]{na początku rodziału}.) za każdym razem, gdy wartością zmiennej \texttt{kredyt} będzie \texttt{"1"}. Znów, zamiast skróconej wersji
+
+\lstinline|kredyt_ile += int(kredyt)|
+
+moglibyśmy napisać
+
+\lstinline|kredyt_ile = kredyt_ile + int(kredyt)|
+
+ale użyta przez nas skrócona wersja jest preferowana. Po przeczytaniu ostatniego wiersza z pliku i wykonaniu bloku pętli, zmienna \texttt{kredyt\_ile} będzie zawierała liczbę wskazującą ile osób ma kredyt. Manadżer kontekstu zamknie plik i program zostanie zakończony.
+
+Jeszcze jeden przykład: tym razem w gronie osób, które nie mają kredytu znajdziemy tę, która ma najwyższy roczny dochód.
+
+\begin{verbatim}
+dochod_max = 0                                                              (1)
+imie_max, nazwisko_max = "", ""                                             (2)
+
+with open("dane.csv", "r") as f:                                            (3)
+    f.readline()                                                            (4)
+    for wiersz in f:                                                        (5)
+        imie, nazwisko, wiek, kredyt, dochod = wiersz.rstrip().split(",")   (6)
+        if (kredyt == "0")) and int(dochod) > dochod_max:                   (7)
+            dochod_max = int(dochod)                                        (8)
+            imie_max, nazwisko_max = imie, nazwisko                         (9)
+
+\end{verbatim}
+
+Krótkie omówienie: zmienna \texttt{dochod\_max} będzie przechowywała tę wartość dochodu, która na danym etapie przeglądania pliku (co robi wiersz (5)), jest największa. Zmienne \texttt{imie\_max} oraz \texttt{nazwisko\_max} przechowują imię i nazwisko osoby o największym dochodzie. Zwróćmy uwagę na sposób przypisania zmiennym \texttt{imie\_max} i \texttt{nazwisko\_max} wartości początkowych --- nie robimy tego w osobnych wierszach, a w jednym (ten sam sposób stosujemy w wierszu (9)). Python dopuszcza taką możliwość, jest to wygodne i naturalne.
+
+Otwieramy plik (3), odczytujemy i pomijamy zbędny wiersz (4), czytamy kolejne wiersze (5), ,,rozkładając'' każdy wiersz na części (6). W wierszu (7) instrukcja warunkowa sprawdza, czy wartością zmiennej \texttt{kredyt} jest \texttt{0} oraz czy jednocześnie dochód osoby, której dane właśnie przeczytaliśmy jest większy od aktualnie najwyższego, pamiętanego w zmiennej \texttt{dochod\_max}. Z lekcji logiki w szkole pamiętamy, że koniunkcja jest prawdziwa, gdy oba jej człony są jednocześnie prawdziwe --- to gwarantuje, że aprobowane są wyłącznie osoby, których kredyt ma wartość \texttt{0}. Jeżeli dochód bieżącej osoby jest większy od aktualnie najwyższego, to jej imię i nazwisko zostaną zapamiętane w zmiennych \texttt{imie\_max} oraz \texttt{nazwisko\_max}. Po przeczytaniu całego pliku praca programu się kończy; zmienne \texttt{imie\_max}, \texttt{nazwisko\_max} oraz \texttt{dochod\_max} przechowują dane osoby, której roczny dochód w grupie osób bez kredytów jest najwyższy.
+
+Program ma jedno poważne ograniczenie --- nie rozpoznaje sytuacji, gdy kilka osób osiągnęło ten sam, największy dochód. Pamięta tylko tę, która jako pierwsza pojawiła się w pliku.
+
+Można sobie z tym poradzić, jeżeli zamiast po prostu zapamiętywać imię i nazwisko, będziemy dodawali je do listy. Oto poprawiona wersja
+
+\begin{verbatim}
+dochod_max = 0                                                              (1)
+lista_max = []                                                              (2)
+
+with open("dane.csv", "r") as f:                                            (3)
+    f.readline()                                                            (4)
+    for wiersz in f:                                                        (5)
+        imie, nazwisko, wiek, kredyt, dochod = wiersz.rstrip().split(",")   (6)
+        kredyt, dochod = bool(int(kredyt)), int(dochod)                     (7)
+        if not kredyt and dochod > dochod_max:                              (8)
+            dochod_max = dochod                                             (9)
+            lista_max = [f"{imie} {nazwisko}"]                              (10)
+        elif not kredyt and dochod == dochod_max:                           (11)
+            dochod_max = dochod                                             (12)
+            lista_max = lista_max.append(f"{imie} {nazwisko}")              (13)
+\end{verbatim}
+
+Opis działania: w wierszu (2) tworzymy zmienną \texttt{lista\_max}, która będzie przechowywała listę osób, których dochód jest najwyższy. Początkowo lista ta jest pusta.
+
+Wiersze (3)--(6) są skopiowane z poprzedniej wersji. Dodaliśmy wiersz (7), w którym zmiennej \texttt{kredyt} przypisujemy wartość, powstałą w wyniku dwóch kolejnych konwersji: a) tekstu na liczbę całkowitą (wynikiem będzie  0 lub 1); b) konwersji tej liczby na wartość logiczną --- liczbie 0 odpowiada \texttt{False}, liczbie 1 --- \texttt{True}, a zmiennej \texttt{dochod} wartość liczbową odpowiadającą pierwotnemu tekstowi.
+
+Wiersz (8) sprawdza, czy dana osoba nie ma kredytu (\texttt{not kredyt} musi być prawdą, a więc \texttt{kredyt} musi być fałszem) oraz czy jej dochód jest większy od aktualnie maksymalnego. Jeżeli tak --- uaktualniane są zmienne \texttt{dochod\_max} oraz \texttt{lista\_max} --- ta ostatnia staje się jednoelementową listą przechowującą nazwisko bieżącego ,,rekordzisty''; jeżeli \lstinline|dochod} jest równy \texttt{dochod\_max}, nazwisko danej osoby dopisywane jest do listy przechowującej aktualnych rekordzistów (wykorzystaliśmy tu metodę \lstinline|append()| zmiennej typu \lstinline|list|).
+
+Po zakończeniu pracy zmienna \texttt{lista\_max} przechowuje nazwiska najbogatszych osób bez zaciągniętego kredytu.
+
+\section{Typy danych w Pythonie}
+
+Niniejszy rozdział poświęcimy szczegółowemu omówieniu typów danych, z których korzystaliśmy w rozdziale poprzednim.
+
+\subsection{Liczby}
+
+W Pythonie standardowo dostępne są liczby \emph{całkowite, rzeczywiste} i \emph{zespolone}.
+
+%~ oraz \emph{wymierne, dziesiętne}. Po co o tym wspominamy? Bo w informatyce liczby różnią się sposobem, w jaki komputer nimi operuje. Najprostsze do realizacji są liczby całkowite.....
+
+Zamiana liczb jednego typu na drugi jest albo automatyczna, na podstawie kontekstu, albo w niektórych przypadkach można ją wymusić, używając odpowiedniej funkcji. Na przykład, w wyrażeniu \lstinline|x = 4 * 2.5| liczba całkowita 4 przed wykonaniem mnożenia zostanie zamieniona na liczbę rzeczywistą (typu \texttt{float}). Wynikiem będzie liczba typu \texttt{float}.
+
+\begin{tabular}{l | l | l}
+  \textsf{liczba} & \textsf{typ}     & \textsf{uwagi/przykłady} \\
+  całkowita       & \texttt{int}     & 3                        \\
+  rzeczywista     & \texttt{float}   & 3.0, -4                  \\
+  zespolona       & \texttt{complex} & 2 + 3j, -1j              \\
+\end{tabular}
+
+\paragraph{Liczby całkowite}dostępne są w pełnym zakresie: od $-\infty$ do $+\infty$. Po osiągnięciu granicy wewnętrznej reprezentacji liczb całkowitych, Python emuluje je za pomocą metod programowych. Siłą rzeczy spowalnia to operacje na wielkich liczbach, ale należy docenić fakt, że bez problemu można z nich korzystać.
+
+Operacje na liczbach całkowitych:
+\begin{enumerate}
+  \item dzielenie całkowitoliczbowe --- \lstinline|17 // 4|$\ \to\ $\lstinline|4|
+  \item operator modulo --- reszta z dzielenia: \lstinline|17 % 5|$\ \to\ $\lstinline|2|
+  \item funkcja \lstinline|divmod} z biblioteki standardowej zwraca jednocześnie wynik dzielenia oraz resztę w postaci pary uporządkowanej --- \lstinline|divmod(11, 4)|$\ \to\ $\lstinline|(2, 3)|
+  \item funkcja \lstinline|int()|, znana z \hyperref[int-oraz-float]{poprzedniego rozdziału} konwertuje liczbę rzeczywistą
+  \item funkcja \lstinline|round()| wywołana bez podania drugiego argumentu zwraca liczbę całkowitą
+\end{enumerate}
+
+\paragraph{Liczby rzeczywiste}--- dostępne są w zakresie ....... Można wykonywać na nich wszelkie operacje dozwolone w arytmetyce. Oprócz tego dostępne są funkcja \lstinline|divmod()} oraz operacja \lstinline|%| modulo.
+
+\paragraph{Liczby zespolone} --- jednostka urojona oznaczana jest symbolem \texttt{j}, liczba sprzężona tworzona jest za pomocą metody \lstinline|conjugate()|.
+
+%\href{https://docs.python.org/3/library/stdtypes.html#string-methods}{metody zmiennych tekstowy}.
+
+\subsection{Teksty}
+
+Typem danych tekstowych jest \emph{string}. Jak wiemy, dla zaznaczenia, że dana jest tekstem używamy cudzysłowu. Przykłady tekstów:
+
+\texttt{"Python"}
+
+\texttt{"Python i Thonny"}
+
+\texttt{"Uczymy się programować"}
+
+\texttt{"A"} --- pojedyncza litera też jest tekstem.
+
+\texttt{"!"} --- i to jest tekst.
+
+\texttt{""} --- tak, to też jest tekst. Pusty.
+
+Utwórzmy zmienną \texttt{s} i nadajmy jej wartość \texttt{"Programowanie"}.
+
+\texttt{s = "Programowanie"}
+
+\important{
+  Python wewnętrznie numeruje kolejne znaki tego tekstu, przy czym pierwszy z nich ma numer --- indeks --- równy 0. Może to dziwne, ale ależy się do tego przyzwyczaić i tyle.}
+
+Powtórzmy --- Python domyślnie zaczyna numerację od 0, więc pierwszy znak zmiennej \texttt{s} ma indeks zero!
+
+\texttt{
+  \begin{tabular}{ c c c c c c c c c c c c c}
+    P & r & o & g & r & a & m & o & w & a & n  & i  & e  \\
+    0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+  \end{tabular}
+}
+
+Żeby wskazać, że chodzi nam o ten znak, wystarczy napisać:
+
+\lstinline|s[0]|$\ \to\ $\texttt{"P"}
+
+%~ \important{
+%~ W dalszym ciągu wartości, jakie przyjmuje zmienna, będę wskazywał strzałką. W powyższym przypadku napisałbym więc \texttt{s[0]}$\ \to\ $\texttt{"P"}.
+%~ }
+
+\lstinline|s[1]|$\ \to\ $\texttt{"r"}
+
+\lstinline|s[8]|$\ \to\ $\texttt{"w"}
+
+Czasem z danego tekstu chcemy odczytać jakiś fragment --- na przykład, moglibyśmy chcieć ,,wyciągnąć'' z tekstu \texttt{s} fragment ,,mowa''. Ustalamy pozycję litery \texttt{"m"}$\ \to\ $\texttt{6}. Ponieważ ,,mowa'' ma długość 4, dla odczytania tego słówka użyjemy konstrukcji:
+
+\lstinline|s[6:10]| (można by też napisać \lstinline|s[6:(6 + 4)]|, ale po co?)
+
+Zwróć uwagę: \lstinline|s[6:10]|, mimo że ,,a'' znajduje się na pozycji 9. Pierwsza liczba jest wliczana, zamiast drugiej Python ,,bierze'' liczbę o 1 mniejszą.
+
+Podobnie, gdybyśmy z tekstu \texttt{s} mieli wyciąć fragment ,,Program'' napisalibyśmy
+
+\lstinline|s[0:7]| --- zaczynamy od indeksu 0, kończymy na indeksie 6 (a więc piszemy 7).
+
+W sytuacji, jak powyższa, Python pozwala napisać:
+
+\lstinline|s[:7]| --- początkowe 0 można pominąć.
+
+Podobnie można pominąć drugi indeks:
+
+\lstinline|s[3:]|$\ \to\ $\texttt{"gramowanie"}.
+
+Jest to szczególnie wygodne i często stosowane w praktyce.
+
+W Pythonie można używać również ujemnych indeksów do wskazywania znaków --- są one odliczane od prawej strony, zamiast od lewej. Indeks 0 znajduje się w tym wariancie tak, jak wskazano poniżej.
+
+\texttt{
+  \begin{tabular}{ c c c c c c c c c c c c c c}
+    -13 & -12 & -11 & -10 & -9 & -8 & -7 & -6 & -5 & -4 & -3 & -2 & -1 & 0 \\
+    P   & r   & o   & g   & r  & a  & m  & o  & w  & a  & n  & i  & e  &   \\
+    0   & 1   & 2   & 3   & 4  & 5  & 6  & 7  & 8  & 9  & 10 & 11 & 12 &   \\
+  \end{tabular}
+}
+
+Na przykład, gdybyśmy chcieli uzyskać ,,mowa'' za pomocą ujemnych indeksów, musielibyśmy napisać
+
+\lstinline|s[-7:-3]|$\ \to\ $\texttt{"mowa"}  (pamiętaj, że ostatni indeks nie jest wliczany).
+
+Osobiście nie lubię używać ujemnych indeksów --- choć przyznaję, że może to być użyteczne. Wyjątek robię dla konstrukcji
+
+\lstinline|s[-1]|
+
+która zawsze zwraca ostatni znak napisu. Podobnie, \lstinline|s[-2]| zwróci zawsze przedostatni znak tekstu.
+
+Jedną z podstawowych operacji na tekstach jest ich łączenie. Żeby połączyć teksty \texttt{"Pada"} oraz \texttt{"deszcz"} wystarczy napisać:
+
+\texttt{"Pada" + "deszcz"} --- wynikiem będzie tekst \texttt{"Padadeszcz"}.
+
+Gdybyśmy chcieli otrzymać tekstu \texttt{"Pada deszcz"} (ze spacją) musielibyśmy połączyć trzy teksty: \texttt{"Pada"}, \texttt{" "} (spacja) oraz \texttt{"deszcz"}:
+
+\texttt{"Pada" + " " + "deszcz"}$\ \to\ $\texttt{"Pada deszcz"}.
+
+Przy pracy z tekstami przydatna będzie też funkcja \lstinline|len()|, która oblicza długość tekstu, podanego jako argument. W rozpatrywanym przypadku, gdy \texttt{s}$\ \to\ $\texttt{"Programowanie"} mielibyśmy:
+
+\lstinline|len(s)|$\ \to\ $\texttt{13}
+
+Gdybyśmy teraz chcieli uzyskać ostatnią literę \texttt{s}, moglibyśmy napisać \lstinline|s[13]|, ale używanie ujemnych indeksów jest zdecydowanie wygodniejsze.
+
+\section{Listy}
+Lista to ...
+
+\section{Słowniki}
+\label{slowniki}
+
+Słownik to złożona struktura danych\footnote{Formalnie --- jest to tablica asocjacyjna (albo inaczej: haszująca). Elementy przechowywane w takiej tablicy identyfikowane są za pomocą unikalnych kluczy, które mogą być liczbami, tekstami i innymi prostymi obiektami. Jedną z zalet tablic asocjacyjnych jest bardzo szybki dostęp do jej elementów.}, która może przechowywać dowolne obiekty dostępne w Pythonie. Dostęp do obiektów zapisanych w tablicy dokonuje się za pomocą \emph{kluczy} powiązanych z obiektami. Słowniki i inne struktury danych omówimy dokładniej w następnym rozdziale, poniżej podamy jedynie przykład słownika i sposobu jego wykorzystania.
+
+
+\begin{lstlisting}
+d = {"lech": 32541, "legia": 31080, "wisła": 29715}             (1)
+d["arka"] = 24769                                               (2)
+del d["lech"]                                                   (3)
+d["arka"] = 25090                                               (4)
+\end{lstlisting}
+
+Krótkie omówienie przykładu --- w wierszu (1) tworzymy słownik i zapamiętujemy go w zmiennej \texttt{d}. Początkowo w słowniku są trzy klucze, wraz z przypisanymi im wartościami: \texttt{"lech"}$\ \to\ $\texttt{32541}, \texttt{"legia"}$\ \to\ $\texttt{31080} i \texttt{"wisła"}$\ \to\ $\texttt{29715}. W wierszu (2) dodajemy kolejny klucz wraz z wartością; w wierszu (3) usuwamy klucz \texttt{"lech"} i związaną z nim wartość, a w wierszu (4) zmieniamy wartość związaną z kluczem \texttt{"arka"} na \texttt{25090}.
+
+\important{Wygodnie jest myśleć o słowniku, jako o zbiorze par \texttt{|klucz <-> wartość|}. Należy przy tym pamiętać, że klucze muszą być unikalne, podczas gdy wartości mogą być zupełnie dowolne.}
+
+
+\subsection*{Zmienne i metody}
+\addcontentsline{toc}{subsection}{Zmienne i metody}
+
+\important{
+  Tworząc zmienną Python rozpoznaje jej typ i ,,dołącza'' do niej zestaw rozmaitych operacji, które można na zmiennej wykonać. Operacje te noszą nazwę \emph{metod}.}
+
+Metody są po prostu funkcjami, których sposób wywołania różni się od ,,zwykłych'' funkcji. Poniżej przykłady wywołania kilku metod charakterystycznych dla zmiennych typu \texttt{string} czyli tekstów:
+
+\lstinline|s.lower()|$\ \to\ $\texttt{"programowanie"}
+
+\lstinline|s.upper()|$\ \to\ $\texttt{"PROGRAMOWANIE"}
+
+\lstinline|s.startswith("Pro")|$\ \to\ $\texttt{True}
+
+Z metodami będziesz często spotykał się w dalszej praktyce.
+
+
+%\include{dodatek-A} % uruchamianie programów w Pythonie
+\include{dodatek-B} % formatowanie f-tekstów
+%~ \include{dodatek-C} spis funkcji
+
+\end{document}

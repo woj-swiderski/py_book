@@ -1,0 +1,83 @@
+\section{Dodatek B --- formatowanie f-stringów}
+\label{dodatek-B}
+
+Formalny opis języka formatowania można znaleźć na \href{https://docs.python.org/3/library/string.html#formatspec}{stosownej podstronie} witryny \verb|python.org| --- tutaj ograniczymy się do reprezentatywnych przykładów.
+
+Przedstawiony schemat formatowania może być używany wewnątrz f-stringów oraz jako parametr metody \verb|format()| i funkcji \verb|format()| z \hyperref[funkcja-format]{biblioteki standardowej}.
+
+Ogólny schemat formatowania wygląda następująco:
+
+{\small
+\verb|{parametr: [[wypełniacz]wyrównanie][znak][\#][0][szerokość][znacznik grupowania][.dokładność][typ]|
+}
+
+\texttt{
+\begin{tabular}{ l l }
+wypełniacz & dowolny znak\\
+wyrównanie & <, >, =, \^{} \\
+znak liczby & +, -, " " (spacja) \\
+szerokość & liczba całkowita \\
+separator tysięcy & \_, "," (przecinek) \\
+dokładność & liczba całkowita \\
+typ & b, c, d, e, E, f, F, g, G, n, o, s, x, X, \%
+\end{tabular}
+}
+
+\subsubsection*{Elementarz}
+
+\verb|"{0}, {1}, {2}".format("a", "b", "c")|$\ \to\ $\verb|'a, b, c'|
+
+\verb|"{}, {}, {}".format("a", "b", "c")|$\ \to\ $\verb|'a, b, c'|
+
+\verb|"{2}, {1}, {0}".format("a", "b", "c")|$\ \to\ $\verb|'c, b, a'|
+
+Argumenty mogą się powtarzać i nie wszystkie muszą wystąpić:
+
+\verb|"{0}, {1}, {0}".format("a", "b", "c")|$\ \to\ $\verb|'a, b, a'|
+
+Argumenty funkcji \verb|format()| mogą mieć nazwy:
+
+\verb|"Wzrost: {wzrost} cm, wiek: {wiek} lat".format(wzrost=184, wiek=45)"|
+
+$\ \to\ $\verb|'Wzrost: 184 cm, wiek 45 lat'|
+
+Jeżeli zdefiniujemy
+
+\verb|dane = {"wiek": 45, "wzrost": 184}|,
+
+to możemy napisać, wykorzystując operator \verb|**| rozpakowania
+
+\verb|"Wzrost: {wzrost} cm, wiek: {wiek} lat".format(**dane)"|$\ \to\ $\verb|Wzrost: 184 cm, wiek 45 lat|
+
+Można również odwoływać się do indeksów:
+
+\verb|wektor = (-3, 4)|
+
+\verb|"x: {0[0]}, y: {0[1]}".format(wektor)|$\ \to\ $\verb|'x: -4, y: 4'|
+
+\subsubsection*{Wyrównywanie}
+
+\verb|"{:_<20}".format("do lewej")|$\ \to\ $\verb|"do lewej_______"|
+
+\verb|"{:.>20}".format("do prawej")|$\ \to\ $\verb|"......do prawej"|
+
+\verb|"{:*^20}".format("do środka")|$\ \to\ $\verb|"*****do środka******"|
+
+Tak z kolei używa się znaków \verb|+| i \verb|-|:
+
+\verb|pi = 3.1416|
+
+\verb|f"pi = {pi:*^+10f}, pi = {pi:-f}"|$\ \to\ $\verb|'pi = +3.141593*, pi = 3.141593'|
+
+\verb|+| wymusza używanie znaku \emph{zawsze}; \verb|-| wyłącznie w przypadku liczb ujemnych; spacja natomiast sprawia, że liczby dodatnie poprzedzone będą spacją, a liczby ujemne minusem.
+
+\subsubsection*{Format binarny, ósemkowy, szesnastkowy}
+
+\verb|"int: {0:d};  hex: {0:x};  oct: {0:o};  bin: {0:b}".format(17)|$\ \to\ $
+
+\verb|'int: 17;  hex: 11;  oct: 21;  bin: 10001'|
+
+\subsubsection*{Separator tysięcy}
+
+\verb|"{:,}".format(1234567890)|$\ \to\ $\verb|'1,234,567,890'|
+
