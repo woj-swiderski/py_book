@@ -1,0 +1,65 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumerate}
+\usepackage[margin=1in]{geometry}
+\usepackage{listings}
+
+\usepackage{polski}
+
+\usepackage{tabularx}
+
+\usepackage{color}
+\definecolor{gray}{rgb}{0.8, 0.8, 0.8}
+
+% makro nadające tło 'gray' tekstowi podanemu jako parametr - stara wersja
+% \newcommand{\important}[1]{\colorbox{gray}{\begin{minipage}[t]{\linewidth}#1\end{minipage}}}
+
+% \newcommand{\important}[1]{\colorbox{gray}{\parbox[t]{0.9\linewidth}{#1}}}
+
+\newcommand{\important}[1]{
+    \begin{center}\colorbox{gray}{
+        \begin{minipage}[t]{0.9\textwidth}{#1}
+        \end{minipage}
+    }
+    \end{center}
+}
+
+\newcommand{\kwords}[1]{\begin{center}\colorbox{gray}{\parbox{0.9\textwidth}{\textbf{Słowa kluczowe:} \emph{#1}}}\end{center}\vspace{1eM}}
+
+\newcommand{\key}[1]{\textbf{#1}}
+
+
+%~ \usepackage[polish]{babel}
+%~ \selectlanguage{polish}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\title{Podstawy Pythona}
+%~ \author{Wojciech Świderski}
+
+\begin{document}
+
+\subsubsection*{Matematyczne}
+\begin{tabularx}{\textwidth}{lp{0.2\textwidth}|lp{0.6\textwidth}|lp{0.2\textwidth}}
+abs() & wartość bezwzględna liczby & \verb|abs(-3)|$\ \to\ $\verb|3|\\
+min() & najmniejsza wartość & \verb|min(3, 2, 5)|$\ \to\ $\verb|2| \\
+max() & największa wartość & \verb|max([2, -1, 3])|$\ \to\ $\verb|3|\\
+round() & zaokrągla liczbę do wskazanej dokładności &  \verb|round(0.267, 2)|$\ \to\ $\verb|0.27|\\
+
+divmod() & zwraca wynik dzielenia całkowitoliczbowego i jego resztę & \verb|divmod(17, 4)|$\ \to\ $\verb|(4, 1)|\\
+pow() & podnosi liczbę do wskazanej potęgi & \verb|pow(2, 3)|$\ \to\ $\verb|8|\\
+sum() & sumę liczb z podanej listy & \verb|sum(1, 2, 3, 4)|$\ \to\ $\verb|10|\\
+any() & True, gdy choćby jeden z warunków podanych na liście jest spełniony & \verb|any([0, False, 1, 1==2])|$\ \to\ $\verb|True|\\
+all() & True, gdy wszystkie warunki podane na liście są spełnione & \verb|any([1, True, 2, 1<=1])|$\ \to\ $\verb|True|\\
+filter() & iterator złożony z tych obiektów, które spełniają wskazany warunek & \verb|list(filter)|$\ \to\ $ \\
+len(s) & długość tekstu & \verb|len("Python")|$\ \to\ $\verb|6|
+\end{tabularx}
+
+\begin{enumerate}[--]
+    \item alfa
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,146 @@
+\section{Biblioteka standardowa}
+\label{dodatek-C}
+
+W niniejszym dodatku znajduje się spis wszystkich funkcji wbudowanych bezpośrednio w Pythona. Można z nich korzystać w każdym programie bez konieczności importowania czegokolwiek. Nie jest to jednak szczegółowe omówienie, podajemy jedynie typowe przykłady wywołania funkcji. Dokładny opis wszystkich parametrów znajdziesz na \href{https://docs.python.org/3/library/functions.html?highlight=builtin%20functions}{stronie dokumentacji Pythona}.
+
+\subsubsection*{Matematyczne}
+
+\begin{enumerate}[]
+    \item \verb|abs()| --- wartość bezwzględna liczby. \verb|abs(-3)|$\ \to\ $\verb|3|
+    \item \verb|min()| --- najmniejsza wartość. \verb|min(3, 2, 5)|$\ \to\ $\verb|2|,
+    \verb|min([-1, 0])|$\ \to\ $\verb|-1|
+    \item \verb|max()| --- największa wartość. \verb|max([2, -1, 3])|$\ \to\ $\verb|2|,
+    \verb|max([-1, 0])|$\ \to\ $\verb|0|
+    \item \verb|round()| --- zaokrągla liczbę do wskazanej dokładności. \verb|round(0.267, 2)|$\ \to\ $\verb|0.27|,
+
+    \verb|round(-1.29)|$\ \to\ $\verb|-1|
+    \item \verb|divmod()| --- zwraca wynik dzielenia całkowitoliczbowego i jego resztę.
+
+    \verb|divmod(17, 4)|$\ \to\ $\verb|(4, 1)|, \verb|divmod(4.3, 2.1)|$\ \to\ $\verb|(2, 0.1)|
+    \item \verb|pow()| --- podnosi liczbę do wskazanej potęgi. \verb|pow(2, 3)|$\ \to\ $\verb|8|
+    \item \verb|sum()| --- suma liczb z podanej listy. \verb|sum(1, 2, 3, 4)|$\ \to\ $\verb|10|, \verb|sum([1, 2, 3])|$\ \to\ $\verb|10|
+
+    \item \verb|any()| --- \verb|True|, gdy choć jeden z warunków podanych na liście jest spełniony.
+
+    \verb|any([0, False, 1, 1==2])|$\ \to\ $\verb|True|
+    \item \verb|all()| --- \verb|True|, gdy wszystkie warunki podane na liście są spełnione.
+
+    \verb|all([1, True, 2, 1<=1])|$\ \to\ $\verb|True|
+
+    \item \verb|filter()| --- iterator złożony z tych obiektów, które spełniają wskazany warunek;
+
+    jeżeli \verb|def g(x): return x < 0|, to \verb|list(filter(g, range(-4,5)))|$\ \to\ $ \verb|[-4, -3, -2, -1]|
+    \item \verb|len(s)| --- długość tekstu. \verb|len("Python")|$\ \to\ $\verb|6|
+\end{enumerate}
+
+\subsubsection*{Wejścia--wyjścia}
+
+\begin{enumerate}[]
+    \item \verb|print()| --- wyświetla na ekranie swoje parametry. \verb|print(1, "->", 2.5)|$\ \to\ $\verb|1 -> 2.5|
+    \item \verb|input()| --- wczytuje dane z klawiatury. \verb|input("Podaj hasło")|
+    \item \verb|open()| --- otwiera wskazany plik. \verb|with open("a.txt", "r") as f:|
+    \item \verb|format()| --- konwertuje podaną wielkość na tekst zgodnie ze specyfikacją formatu.
+
+    \verb|print(format(2.83928, "*^20.2f"))|$\ \to\ $\verb|***2.84***|
+    \label{funkcja-format}
+\end{enumerate}
+
+\subsubsection*{Konwersja danych}
+
+\begin{enumerate}[]
+    \item \verb|bin()| --- konwersja liczby całkowitej na reprezentację dwójkową. \verb|bin(25)|$\ \to\ $\verb|"0b11001"|
+    \item \verb|oct()| --- konwersja liczby całkowitej na reprezentację ósemkową. \verb|oct(25)|$\ \to\ $\verb|"0o31"|
+    \item \verb|hex()| --- konwersja liczby całkowitej na reprezentację szesnastkową. \verb|oct(25)|$\ \to\ $\verb|"0x19"|
+    \item \verb|complex()| --- tworzy liczbę zespoloną. \verb|complex(2, -3)|$\ \to\ $\verb|2-3j|
+    \item \verb|chr()| --- zwraca znak o podanym kodzie UNICODE. \verb|chr(228)|$\ \to\ $\texttt{\"a}
+    \item \verb|ord()| --- zwraca kod UNICODE podanego znaku. \texttt{\"a}$\ \to\ $\verb|228|
+    \item \verb|bool()| --- konwertuje parametr na odpowiednią wartość logiczną. \verb|bool([3])|$\ \to\ $\verb|True|,
+
+    \verb|bool("")|$\ \to\ $\verb|False|, \verb|bool(2.1)|$\ \to\ $\verb|True|, \verb|0|$\ \to\ $\verb|False|
+    \item \verb|int()| --- zwraca liczbę całkowitą zbudowaną na podstawie parametru. Drugi parametr określa w jakim systemie ma być reprezentowana liczba. \verb|int(-4.33)|$\ \to\ $\verb|-4|, \verb|int("31")|$\ \to\ $\verb|31|,
+
+    \verb|int("31", 4)|$\ \to\ $\verb|13|, \verb|int("101", 2)|$\ \to\ $\verb|5|
+    \item \verb|float()| --- zwraca liczbę całkowitą zbudowaną na podstawie parametru. \verb|float(3)|$\ \to\ $\verb|3.0|, \verb|float("-2.91")|$\ \to\ $\verb|-2.91|
+    \item \verb|str()| --- konwertuje obiekt na postać tekstową. \verb|str([1, 2])|$\ \to\ $\verb|'[1, 2]'|,
+
+    \verb|str({'a': 3, 'b': 9})|$\ \to\ $\verb|"{'a': 3, 'b': 9}"|
+    \item \verb|repr()| --- konwertuje obiekt na postać tekstową. W wielu przypadkach działa analogicznie, jak \verb|str()|
+    \item \verb|ascii()| --- działa jak \verb|repr()|, ale pomija znaki, których nie obejmuje kod ASCII.
+\end{enumerate}
+
+\subsubsection*{Obiekty}
+%~ setattr()
+%~ delattr()
+%~ hasattr()
+%~ getattr()
+
+%~ property()
+
+\begin{enumerate}[]
+    \item \verb|list()| --- zwraca listę utworzoną z podanego parametru. \verb|list()|$\ \to\ $\verb|[]|,
+
+    \verb|list("abc")|$\ \to\ $\verb|['a', 'b', 'c']|, \verb|list(range(1, 4))|$\ \to\ $\verb|[1, 2, 3]|
+
+    \item \verb|set()| --- zwraca zbiór utworzony z podanego parametru. \verb|set()|$\ \to\ $\verb|{}|,
+
+    \verb|set("aabbc")|$\ \to\ $\verb|{'a', 'b', 'c'}|, \verb|set([1, 1, 1])|$\ \to\ $\verb|{1}|
+
+    \item \verb|dict()| --- zwraca słownik utworzony z podanego parametru. \verb|dict([('a', 2), ('b', -1)])|$\ \to\ $\verb|{'a': 2, 'b': -1}|,
+
+    \verb|dict('a'=2, 'b'=-1)|$\ \to\ $\verb|{'a': 2, 'b': -1}|
+
+    \item \verb|frozenset()| --- zwraca zbiór niemodyfikowalny utworzony z podanego parametru. \verb|set()|$\ \to\ $\verb|{}|, \verb|set("aabbc")|$\ \to\ $\verb|{'a', 'b', 'c'}|, \verb|set([1, 1, 1])|$\ \to\ $\verb|{1}|
+
+    \item \verb|tuple()| --- zwraca krotkę utworzoną z podanego parametru. \verb|tuple("ewa")|$\ \to\ $\verb|('e', 'w', 'a')|, \verb|tuple({'a': 1, 'b': 0})|$\ \to\ $\verb|('a', 'b')|
+
+    \item \verb|type()| --- zwraca typ obiektu. \verb|type((1, 2))|$\ \to\ $\verb|<class 'tuple'>|,
+
+    \verb|type("a")|$\ \to\ $\verb|<class 'str'>|
+
+\end{enumerate}
+
+%~ object()
+%~ callable()
+%~ classmethod()
+%~ staticmethod()
+
+%~ isinstance()
+%~ issubclass()
+%~ super()
+
+
+%~ \subsubsection*{Systemowe}
+%~ hash()
+%~ memoryview()
+
+%~ globals()
+%~ locals()
+%~ vars()
+
+%~ bytearray()
+%~ bytes()
+
+
+%~ id()
+%~ eval()
+%~ exec()
+%~ compile()
+%~ breakpoint()
+%~ __import__()
+
+%~ \subsubsection*{Informacyjne}
+%~ help()
+%~ dir()
+
+%~ \subsubsection*{Iteracje}
+%~ sorted()
+%~ next()
+%~ enumerate()
+%~ map()
+%~ reversed()
+
+%~ range()
+%~ zip()
+%~ iter()
+
+%~ slice()
