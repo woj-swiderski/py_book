@@ -1,0 +1,1198 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amssymb}
+
+%~ \usepackage{enumerate}
+\usepackage{enumitem}
+%~ \usepackage[margin=1in]{geometry}
+\usepackage{geometry}
+\usepackage{multicol}
+
+\usepackage{color}
+\definecolor{gray}{rgb}{0.8, 0.8, 0.8}
+\definecolor{deepgreen}{rgb}{0.156, 0.43, 0}
+
+\usepackage{listings}
+
+\lstset{
+language=Python,
+basicstyle=\ttfamily,
+keywordstyle=\bfseries,
+tabsize=4,
+numbers=left,
+numberblanklines=false,
+showstringspaces=false,
+keepspaces,
+keywordstyle=\color{blue},
+stringstyle=\color{deepgreen}
+}
+
+\lstset{
+literate={ą}{{\c a}}1
+{ć}{{\' c }}1
+{ę}{{\c e }}1
+{ł}{{\l}}1
+{ń}{{\'n}}1
+{ó}{{\'o}}1
+{ś}{{\'s}}1
+{ź}{{\'z}}1
+{ż}{{\.z}}1
+}
+
+\usepackage{polski}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{hyperref}
+
+% makro nadające tło 'gray' tekstowi podanemu jako parametr - stara wersja
+% \newcommand{\important}[1]{\colorbox{gray}{\begin{minipage}[t]{\linewidth}#1\end{minipage}}}
+
+% \newcommand{\important}[1]{\colorbox{gray}{\parbox[t]{0.9\linewidth}{#1}}}
+
+\newcommand{\important}[1]{
+    \begin{center}\colorbox{gray}{
+        \begin{minipage}[t]{0.9\textwidth}{#1}
+        \end{minipage}
+    }
+    \end{center}
+}
+
+\newcommand{\kwords}[1]{\begin{center}\colorbox{gray}{\parbox{0.9\textwidth}{\textbf{Słowa kluczowe:} \emph{#1}}}\end{center}\vspace{1eM}}
+
+\newcommand{\key}[1]{\textbf{#1}}
+
+%~ \usepackage[polish]{babel}
+%~ \selectlanguage{polish}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\title{Odpowiedzi do wybranych zadań}
+%~ \author{Wojciech Świderski}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% --- czy counter MUSI być zdefiniowany tu, czy może być w preambule?
+\newcounter{zadanie}
+\setcounter{zadanie}{1}
+%------------------------------
+
+\section{Wejście / wyjście}
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{tabular}{l|l|l}
+\textsf{rodzaj danych} & \textsf{zachęta} & \textsf{input} \\\hline
+liczba całkowita & \dots & \verb|d = int(input('długość w cm: '))|\\\hline
+liczba całkowita & \dots & \verb|d = int(input('waga w kg: '))|\\\hline
+wartość logiczna & \dots & \verb|ans = bool(input('tak / nie? '))|\\\hline
+tekst & \dots & \verb|imie = input('Podaj imię: ')| \\\hline
+liczba rzeczywista & \dots & \verb|szer = float(input(('Podaj szerokość: '))| \\\hline
+liczba całkowita & \dots & \verb|l_g = int(input('liczba gości: '))| \\\hline
+tekst & \dots & \verb|nazwisko = input('nazwisko: ')| \\\hline
+liczba całkowita & \dots & \verb|wiek = int(input('wiek w latach: '))| \\\hline
+liczba całkowita & \dots & \verb|liczba_pok = int(input('liczba pokojów: '))| \\\hline
+liczba rzeczywista & \dots & \verb|dlugosc = float(input('długość w metrach: '))| \\\hline
+wartość logiczna & \dots & \verb|czy_wiecej = bool(input('więcej? '))|
+\end{tabular}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|print(e, f, sep='/')|
+    \item \verb|print(e, f, sep=' / ')|
+    \item \verb|print(e, f, sep=', ')|
+    \item \verb|print(e, f, sep=',\n')|
+    \item \verb|print(str, str_2, sep=' i ')|
+    \item \verb|print(str, str_2, sep=', ')|
+    \item \verb|print(str, str_2, sep='\n')|
+    \item \verb|print(str, str_2, sep='\t')|
+\end{enumerate}
+\end{multicols}
+
+\section{Zmienne}
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Nazwa zmiennej \emph{nie może} zwierać spacji, znaków interpunkcyjnych i znaków operacji matemtycznych. Nie może się zaczynać od cyfry, choć może cyfry zawierać. \verb|_| (,,podłoga'') jest dozwolona jako nazwa zmiennej.
+
+W nazwach zmiennych \emph{mogą} występować znaki specyficzne dla niektórych języków (np. polskiego). \emph{Nie jest} to jednak zalecane.
+
+\begin{multicols}{3}
+\begin{enumerate}[label=\arabic*.]
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item nie
+    \item tak
+    \item tak
+    \item tak
+    \item nie
+    \item nie
+    \item nie
+    \item nie
+    \item nie
+    \item nie
+    \item nie
+    \item nie
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item tak
+    \item nie
+    \item tak
+    \item tak
+    \item nie
+    \item tak
+    \item tak
+    \item tak
+    \item nie
+    \item nie
+    \item tak
+    \item tak
+    \item nie
+    \item nie
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|l = 4|
+    \item \verb|i = -1|
+    \item \verb|j = 2 * 5|
+    \item \verb|k = 2 / 5|
+    \item \verb|r = 2.4|
+    \item \verb|b = 0b1000|
+    \item \verb|o = 0o11|
+    \item \verb|h = 0h10|
+    \item \verb|test = False|
+    \item \verb|jezyk = 'Python'|
+    \item \verb|ver = '3.10'|
+    \item \verb|i2 = 3 ** 2|
+    \item \verb|imie = 'Adam'|
+    \item \verb|kody = {'a': 0, 'b': 1, 'c': 3, 'd': 4}|
+    \item \verb|odwiedzone = {1, 2, 3, 4, 5}|
+    \item \verb|pierwsze = (2, 3, 5, 7)|
+    \item \verb|tic_tac = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]|
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|l = 2 * l|
+    \item \verb|i = -i|
+    \item \verb|j = j ** 2 + 5|
+    \item \verb|k = k / 5|
+    \item \verb|r = 2.4 * r|
+    \item \verb|test = not test|
+    \item \verb|jezyk = 'Nim'|
+    \item \verb|ver = '1.60'|
+    \item \verb|o = 0o123|
+    \item \verb|h = 0hfe|
+    \item \verb|b = 0b111|
+    \item \verb|imie = 'Ewa'|
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\verb|t = 4|
+
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|t += 1|
+    \item \verb|t *= 4|
+    \item \verb|t //= 2|
+    \item \verb|t -= 3|
+    \item \verb|t //= 3|
+    \item \verb|t **= 3|
+    \item \verb|t %= 5|
+\end{enumerate}
+
+Ostatecznie \verb|t = 3|.
+
+\section{Wyrażenia}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{multicols}{3}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|3, int|
+    \item \verb|3.0, float|
+    \item \verb|50, int|
+    \item \verb|50.0, float|
+    \item \verb|1.0, float|
+    \item \verb|2.0, float|
+    \item \verb|0.5, float|
+    \item \verb|0, int|
+    \item \verb|0, int|
+    \item \verb|2, int|
+    \item \verb|2.0, float|
+    \item \verb|0, int|
+    \item \verb|0.0, float|
+    \item \verb|1.0, float|
+    \item \verb|0.7, float|
+    \item \verb|0.0, float|
+    \item \verb|2, int|
+    \item \verb|2, int|
+
+    \item \verb|5, int|
+    \item \verb|3, int|
+    \item \verb|0, int|
+    \item \verb|4.0, float|
+    \item \verb|0.75, float|
+    \item \verb|0.75, float|
+    \item \verb|0, float|
+    \item \verb|0, float|
+
+    \item \verb|1.0, float|
+
+    \item \verb|8, int|
+    \item \verb|2.8284271247461903, float|
+    \item \verb|2, int|
+    \item \verb|7, int|
+    \item \verb|3, int|
+    \item \verb|3, int|
+    \item \verb|(2, 3), tuple|
+    \item \verb|(5.0, 1.0), tuple|
+    \item \verb|(5.0, 1.0), tuple|
+
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Typ wyniku podany obok wartości.
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|1, int|
+    \item \verb|3, int|
+    \item \verb|0.0, float|
+    \item \verb|0.0, float|
+    \item \verb|0, int|
+    \item \verb|1, int|
+    \item \verb|2.0, float|
+    \item \verb|1, int|
+    \item \verb|1.0, float|
+    \item \verb|True, bool|
+    \item \verb|False, bool|
+    \item \verb|True, bool|
+    \item \verb|False, bool|
+    \item \verb|0, int|
+    \item \verb|True, bool|
+    \item \verb|False, bool|
+
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|False|
+    \item \verb|True|
+    \item \verb|False|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|False|
+    \item \verb|True|
+    \item \verb|False|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|False|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|True|
+    \item \verb|False|
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|True|
+    \item \verb|'a'|
+    \item \verb|2|
+    \item \verb|''|
+    \item \verb|'kot'|
+    \item \verb|3|
+    \item \verb|2|
+    \item \verb|4|
+    \item \verb|[]|
+    \item \verb|2|
+
+\end{enumerate}
+
+\end{multicols}
+
+\section{Rozpakowanie}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{tabular}{p{.4\textwidth}|p{.5\textwidth}}
+\textsf{rozpakowanie} & \textsf{wynik} \\\hline
+\verb|a, b = [1, 2]| & \verb|a = 1, b = 2|\\
+\verb|a, b, c = [1, 2, 3]| & \verb|a = 1, b = 2, c = 3|\\
+\verb|a, b, c, d = [1, 2, 3, 4]| & \verb|a = 1, b = 2, c = 3, d = 4| \\
+\verb|a, b, c, d = 'kura'| & \verb|a = 'k', b = 'u', c = 'r', d = 'a'| \\
+\verb|a, b, c, d = 'kot'| & błąd -- za mało wartości do rozpakowania \\
+
+\end{tabular}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{tabular}{p{.4\textwidth}|p{.5\textwidth}}
+\textsf{rozpakowanie} & \textsf{wynik} \\\hline
+\verb|a, *b = [1, 2, 3, 4]| & \verb|a = 1, b = [2, 3, 4]| \\
+\verb|*a, b = [1, 2, 3, 4]| & \verb|a = [1, 2, 3], b = 4| \\
+\verb|a, *b, c = [1, 2, 3]| & \verb|a = 1, b = [2], c = 3| \\
+\verb|a, *b = 'kucyk'| & \verb|a = 'k', b = ['u', 'c', 'y', 'k']| \\
+\verb|*a, b, c = 'kucyk'| & \verb|a = ['k', 'u', 'c'], b = 'y', c = 'k'| \\
+\verb|a, *b, c = 'kucyk'| & \verb|a = 'k', b = ['u', 'c', 'y'], c = 'k'| \\
+\verb|a, *b = 'kucyk'| & \verb|a = 'k', b = ['u', 'c', 'y', 'k']|\\
+\verb|*a, b = 'kucyk'| & \verb|a = ['k', 'u', 'c', 'y'], b = 'k'|\\
+\end{tabular}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+
+\begin{tabular}{p{.4\textwidth}|p{.5\textwidth}}
+\textsf{rozpakowanie} & \textsf{wynik} \\\hline
+\verb|*a, b, c = [1, 2, 3, 4]| & \verb|a = [1, 2], b = 3, c = 4| \\
+\verb|*a, b = 'maska'| & \verb|a = ['m', 'a', 's', 'k'], b = 'a'| \\
+\verb|*a, b, c = 'maska'| & \verb|a = ['m', 'a', 's'], b = 'k', c = 'a'| \\
+\verb|a, *b, c = 'maska'| & \verb|a = 'm', b = ['a', 's', 'k'], c = 'a'| \\
+\verb|a, b, *c = 'maska'| & \verb|a = 'm', b = 'a', c = ['s', 'k', 'a']| \\
+\verb|*a, b = [1, 2, [3, 4]]| & \verb|a = [1, 2], b = [3, 4]| \\
+\end{tabular}
+
+KONIEC
+\section{Wyrażenie warunkowe}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Wyznacz wartość wyrażeń warunkowych w poniższej tabeli.
+
+\begin{tabular}{l|l|c}
+\textsf{zmienna} & \textsf{wyrażenie warunkowe} & \textsf{wartość} \\\hline
+\verb|s = 0b10| & \verb|3 if s == 2 else 0| & 3\\
+\verb|s = 0o14| & \verb|s if s >= 12 else 0| &\\
+\verb|s = 1| & \verb|1 if s else 0| &\\
+\verb|s = 'a_0'| & \verb|1 if s else 0|&\\
+\verb|s = 'a_0'| & \verb|1 if len(s) <= 3 else 0|&\\
+\verb|s = 'a_0'| & \verb|'x' if s[0] == 'a' else 'y'|&\\
+\verb|s = 'a_0'| & \verb|'x' if s[-1] != '2' else 'y'|&\\
+\verb|s = 'a_0'| & \verb|'x' if s[-1] == '0' else 'y'|&\\
+\verb|s = 'a_0'| & \verb|'x' if s[:0] else 'y'|&\\
+\verb|s = ''| & \verb|3 if s else 9|&\\
+\verb|s = []| & \verb|0 if s else 1|&\\
+\verb|s = {}| & \verb|0 if s else 1|&\\
+\end{tabular}
+\newline
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Niech \verb|z = 'alf'|. Oblicz samodzielnie wartość wyrażeń.
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|len(z) >= 3|
+    \item \verb|len(z) < 4|
+    \item \verb|len(z) >= 1|
+    \item \verb|'l' in z|
+    \item \verb|'fl' in z|
+    \item \verb|'af' in z|
+    \item \verb|'alf' in z|
+    \item \verb|'lf' in z|
+    \item \verb|1 if len(z) == 3 else -1|
+    \item \verb|2 if len(z) <= 3 else 0|
+    \item \verb|2 if len(z) % 2 == 1 else 0|
+
+\end{enumerate}
+\end{multicols}
+
+
+\section{Listy}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Utwórz szybko listę złożoną:
+\begin{enumerate}[label=\arabic*.]
+    \item ze stu liczb równych \verb|0|
+    \item z tysiąca liczb równych \verb|1|
+    \item z pięciuset liter \verb|'a'|
+\end{enumerate}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Wykonaj poniższe polecenia.
+\begin{enumerate}[label=\arabic*.]
+    \item Napisz wyrażenie, które tworzy listę złożoną z liczb \verb|1, 2, 3|.
+    %~ [1, 2, 3]
+    \item Napisz inne wyrażenie, które tworzy taką samą listę.
+    %~ list(range(1, 4))
+    %~ [j for j in range(1, 4)]
+    \item Przypisz tę listę zmiennej \verb|l|.
+    \item Napisz pięć różnych wyrażeń, które z pomocą listy \verb|l| tworzą listę \verb|[1, 2, 3, 4]|.
+    %~ l.append(4) // l.extend([4]) // l += [4] // l = [*l, 4] // l[-1:] = [3, 4]
+    \item Napisz dwa wyrażenia, które z listy \verb|l| usuwają ostatni element.
+    %~ l.pop(), del l[-1]
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Wykonaj sekwencję poleceń, używając odpowiednich konstrukcji Pythona, funkcji i metod.
+
+\begin{enumerate}[label=\arabic*.]
+    \item Utwórz listę \verb|l=[5, 5, 5]|.
+    \item Na końcu listy \verb|l| dodaj kolejno elementy \verb|7, 8, 9|.
+    \item Między elementy \verb|5| i \verb|7| wstaw \verb|6|.
+    \item Zerowy element listy \verb|l| zamień na \verb|3|, pierwszy na \verb|4|
+    \item Usuń ostatni element listy \verb|l|.
+    \item Rozszerz listę \verb|l| o listę \verb|[10, 11, 12]|.
+    \item Usuń trzeci (tj. mający indeks 2) element listy \verb|l|.
+\end{enumerate}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Dana jest lista \verb|l = [1, 2, 3, 4, ..., 20]|. Używając notacji ,,slice'' \verb|[i:j:k]| skopiuj z niej poniższe listy:
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|[1, 2, 3, ..., 10]|
+    \item \verb|[10, 11, 12, ..., 20]|
+    \item \verb|[2, 4, 6, 8, 10]|
+    \item \verb|[10, 12, 14, 16, 18, 20]|
+    \item \verb|[1, 3, 5, 7, 9]|
+    \item \verb|[11, 13, 15, 17, 19]|
+    \item \verb|[1, 3, 5, ..., 19]|
+    \item \verb|[2, 4, 6, ..., 20]|
+    \item \verb|[1, 4, 7, ..., 19]|
+    \item \verb|[2, 5, 8, ..., 20]|
+\end{enumerate}
+
+\end{multicols}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Używając ,,slice'' zmodyfikuj listę \verb|l| z poprzedniego zadania, jak poniżej.
+
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|[0, 0, ..., 0, 10, 11, ..., 20]|
+    \item \verb|[1, 2, ..., 9, 10, 10, ..., 10]|
+    \item \verb|[1, 2, 19, 20]|
+    \item \verb|[1, 2, 3, 18, 19, 20]|
+    \item \verb|[1, 2, 3]|
+    \item \verb|[1, 2, 19, 20]|
+    \item \verb|[1, 2, ..., 7, 8, 8, 8, 8, 12, 13, ..., 20]|
+    \item \verb|[1, 2, ..., 9, 10, 10, ..., 10]|
+    \item \verb|[7, 2, 7, 4, 7, 6, 7, 8, 7, 10, 7, 12, 7, 14, 7, 16, 7, 18, 7, 20]|
+
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Dana jest lista \verb|l| taka, jak w poprzednim zadaniu. Napisz wyrażenia, które korzystają z \verb|l| i dają w wyniku poniższe listy.
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item \verb |[1, 3, 5, 7, 9]|
+    \item \verb |[1, 2, 3, 4, 5]|
+    \item \verb |[2, 4, 6, 8, 10]|
+    \item \verb |[1, 4, 7, 10]|
+    \item \verb |[2, 6, 10]|
+    \item \verb |[2, 5, 8]|
+    \item \verb |[3, 6, 9]|
+    \item \verb |[2, 6]| (dwoma sposobami)
+    \item \verb |[5, 8]| (dwoma sposobami)
+    \item \verb |[3, 9]| (dwoma sposobami)
+    \item \verb |[3, 4, 5, 6]|
+    \item \verb |[15, 16, 17, 18, 19, 20]|
+\end{enumerate}
+\end{multicols}
+
+
+\section{List comprehension}
+List comprehension to bardzo wygodna notacja, którą można stosować nie tylko w odniesieniu do list.
+
+\important{Ogólna składnia \emph{list comprehension} jest następująca:
+
+\vspace{.5em}
+\centerline{\texttt{[ ... for x in} \emph{ob\_iterowalny} \texttt{if war\_logiczny]}}
+\vspace{.5em}
+Powyższy wariant tworzy listę -- użycie nawiasu klamrowego utworzy zbiór lub słownik, w zależności od szczegółów konstrukcji.
+\vspace{.5em}
+
+\texttt{...} należy rozumieć jako realizację pewnej operacji.
+}
+
+\paragraph{Przykład} Niech \verb|iterable = 'Python'|.
+\begin{enumerate}[]
+    \item \verb|[ord(x) for x in 'Python']| $\rightarrow$ \verb|[80, 121, 116, 104, 111, 110]|
+    \item \verb|[i for i, c in enumerate('Python')]| $\rightarrow$ \verb|[0, 1, 2, 3, 4, 5]|
+    \item \verb|{i: c for i, c in enumerate('Python')}| $\rightarrow$\newline
+    \verb|{0: 'P', 1: 'y', 2: 't', 3: 'h', 4: 'o', 5: 'n'}|
+    \item \verb|{c for c in 'Python' if c != 'o'}| $\rightarrow$ \verb|{'P', 'y', 't', 'h', 'n'}| (to jest zbiór, zatem w rzeczywistości kolejność liter może być różna)
+    \item \verb|[c for i, c in enumerate('Python') if i % 2]| $\rightarrow$ \verb|['y', 'h', 'n']|
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Dane są zmienne
+\begin{enumerate}[]
+    \item \verb|a = 'kosmodrom'|
+    \item \verb|b = 'alfabetyzacja'|
+    \item \verb|c = 'luminescencja'|
+    \item \verb|x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]|
+\end{enumerate}
+
+Korzystając z tych zmiennych napisz list comprehension, którego wynikiem jest:
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|['k', 'o', 's', 'm', 'o', 'd', 'r', 'o', 'm']|
+    \item \verb|['a', 'l', 'f', 'a', 'b', 'e', 't', 'y', 'z', 'a', 'c', 'j', 'a']|
+    \item \verb|['l', 'u', 'm', 'i', 'n', 'e', 's', 'c', 'e', 'n', 'c', 'j', 'a']|
+    \item \verb|['l', 'u', 'm', 'i', 'n', 'e', 's', 'e', 'n', 'j', 'a']|
+    \item \verb|['l', 'm', 'n', 's', 'c', 'n', 'c', 'j']|
+    \item \verb|[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]|
+    \item \verb|[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]|
+    \item \verb|[1, 3, 5, 7, 9]|
+    \item \verb|[1, 2, 3, 4, 5]|
+    \item \verb|[2, 4, 6, 8, 10]|
+    \item \verb|[15, 16, 17, 18, 19, 20]|
+    \item \verb|['a', 'a', 'a', 'a']|
+    \item \verb|['a', 'a', 'b', 'a', 'c', 'a']|
+    \item \verb|['o', 'o', 'o']|
+    \item \verb|[97, 108, 102, 97, 98, 101, 116, 121, 122, 97, 99, 106, 97]|
+\end{enumerate}
+
+
+\section{Teksty}
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Za pomocą operatora \verb|*| utwórz tekst złożony z:
+\begin{enumerate}[label=\arabic*.]
+    \item ze stu liter \verb|'a'|
+    \item czterdziestu myślników \verb|'-'|
+    \item trzydziestu gwiazdek \verb|'*'|
+\end{enumerate}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Za pomocą operatora \verb|+| utwórz z tekstów \verb|'Krowa'|, \verb|'daje'|, \verb|'mleko'| teksty
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|'Krowa daje mleko'|
+    \item \verb|'Krowa mleko daje'|
+    \item \verb|'mleko daje Krowa'|
+\end{enumerate}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Z trzech tekstów \verb|'Trzeba'|, \verb|'więcej'|, \verb|'pracować'| utwórz teksty
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|'Trzeba więcej pracować'|
+    \item \verb|'więcej Trzeba pracować'|
+    \item \verb|'pracować Trzeba więcej'|
+    \item \verb|'więcej pracować Trzeba'|
+    \item \verb|'Trzeba pracować więcej'|
+    \item \verb|'pracować więcej Trzeba'|
+\end{enumerate}
+
+\subsection{Metody obiektu \texttt{str}}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Z trzech tekstów \verb|'Trzeba'|, \verb|'więcej'|, \verb|'pracować'| utwórz poniższe teksty. Wykorzystaj metodę \verb|capitalize()|.
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|'Trzeba Więcej Pracować'|
+    \item \verb|'Więcej Trzeba Pracować'|
+    \item \verb|'Pracować Trzeba Więcej'|
+    \item \verb|'więcej Pracować Trzeba'|
+    \item \verb|'Trzeba Pracować Więcej'|
+    \item \verb|'Pracować Więcej Trzeba'|
+\end{enumerate}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Utwórz zmienną \verb|motto| i nadaj jej wartość \verb|'Nobody is gonna turn Me round'|. Użyj odpowiedniej metody, by uzyskać tekst:
+
+\begin{enumerate}[label=\arabic*.]
+    \item 'NOBODY IS GONNA TURN ME ROUND'
+    \item 'nobody is gonna turn me round'
+    \item 'Nobody is gonna turn me round'
+    \item 'Nobody Is Gonna Turn Me Round'
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Korzystając z tekstu \verb|'nie lubię myć nóg'| i wskazanych metod wykonaj poniższe polecenia:
+
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|split()| -- utwórz zmienną \verb|l| i nadaj jej wartość \verb|['nie', 'lubię', 'myć', 'nóg']|
+    \item \verb|join()| -- zamień element \verb|'nie'| na \verb|'Nie'|, a następnie zmiennej \verb|ll| nadaj wartość \verb|'Nie-lubię-myć-nóg'|
+    \item \verb|count()| -- podaj, ile razy występuje w tym tekście \verb|'i'|
+    \item \verb|rindex()| -- jaki jest indeks ostatniej litery \verb|'i'| w tym tekście
+    \item \verb|find()| -- podaj indeks, pod jakim w danym tekście występuje tekst \verb|'my'|
+    \item \verb|split()| -- teraz nadaj zmiennej \verb|l| wartość \verb|['nie', 'lubię', 'myć', 'nóg']|
+    \item \verb|join()| -- zmiennej \verb|l| nadaj wartość \verb|'Nie ** lubię ** myć ** nóg'|
+    \item \verb|replace()| -- zmiennej \verb|l| nadaj teraz wartość \verb|'Nie -- lubię -- myć -- nóg'|
+    \item \verb|startswith()| -- sprawdź, czy tekst \verb|l| zaczyna się od \verb|'Nie'|
+    \item \verb|islower()| -- sprawdź, czy tekst \verb|l| składa się wyłącznie z małych liter
+
+\end{enumerate}
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Dane są zmienne
+\begin{enumerate}[]
+    \item \verb|a = 'elektroluminescencja'|,
+    \item \verb|b = 'alfabetyzaja'|,
+    \item \verb|c = 'kosmodrom'|.
+\end{enumerate}
+
+Napisz wyrażenie, którego wynikiem jest tekst
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|'alfabetyzacjakosmodrom'|
+    \item \verb|'alf'|
+    \item \verb|'kos'|
+    \item \verb|'elektro'|
+    \item \verb|'alfabet'|
+    \item \verb|'luminescencja'|
+    \item \verb|'m'| - ostatni znak tekstu c
+    \item \verb|'om'|
+    \item \verb|'k'| - pierwszy znak tekstu c
+    \item \verb|'osm'|
+    \item \verb|'trol'|
+    \item \verb|'mordomsok'|
+    \item \verb|lista ['k', 'o', 's', 'm', 'o', 'd', 'r', 'o', 'm']|
+    \item \verb|'ajcazytebafla'|
+
+    \item \verb|'***kosmodrom***'|
+    \item \verb|'Kosmodrom'|
+    \item \verb|'KOSMODROM'|
+
+
+\end{enumerate}
+
+\subsubsection{Metoda \texttt{format()}}
+
+\section{Formatowanie tekstów}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Dane są zmienne:
+\begin{enumerate}[ ]
+    \item \verb|e = 3.21|
+    \item \verb|f = 16/7|
+    %~ \item \verb|i = 4|
+    \item \verb|j = 7|
+    \item \verb|str = 'szpak'|
+    \item \verb|str_2 = 'kos'|
+\end{enumerate}
+
+Wypisz wartości wskazanych zmiennych, korzystając z funkcji \verb|format()|. Użyj podanego tekstu jako szablonu.
+
+TO DO -------------------- FLOAT FLOAT {:0.3f}
+
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|e, f, j| -- \verb|'{} {} {}'|
+    \item \verb|e, f, j| -- \verb|'e={} f={} j={}'|
+
+    \item \verb|e, f, j| -- \verb|'{0}, {1}, {2}'|
+    \item \verb|e, f, j| -- \verb|'e={0}, f={1}, j={2}'|
+
+    \item \verb|e, f, j| -- \verb|'f={1}, j={2}, e={0}'|
+    \item \verb|e, f, j| -- \verb|'{0}-{0}-{2}'|
+    \item \verb|e, f, j| -- \verb|'{2} / {1} / {0}'|
+    \item \verb|e, f, j| -- \verb|'{1} : {0} : {2}'|
+
+    \item \verb|e, f, j| -- \verb|'{:_^8}-{}-{:*^7}'|
+    \item \verb|e, f, j| -- \verb-'{0:_<8} | {1} | {2:*^9}'-
+
+    \item \verb|e, f, j| -- \verb|'e={: >8}, f={:.3}-{:*^7}'|
+    \item \verb|e, f, j| -- \verb-'e={0:_<8} | f={1:+^10.4} | {2:*^9}'-
+
+    \item \verb|f| -- \verb|'f={1:+^10.1}|
+    \item \verb|f| -- \verb|'f={1:+<10.2}|
+    \item \verb|f| -- \verb|'f={1:+<10.3}|
+    \item \verb|f| -- \verb|'f={1:+>10.4}|
+    \item \verb|f| -- \verb|'f={1:+>10.5}|
+    \item \verb|f| -- \verb|'f={1:+>10.6}|
+
+    \item \verb|str, str_2| -- \verb|'{} i {}'|
+    \item \verb|str, str_2| -- \verb|'{0} i {1}'|
+    \item \verb|str, str_2| -- \verb|'{1} i {0}'|
+    \item \verb|str, str_2| -- \verb|'{1} i {2}'|
+    \item \verb|str, str_2| -- \verb|'{} i {}'|
+
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Korzystając ze zmiennych z poprzedniego zadania zbuduj szablon dla funkcji \verb|format()| i przekaż jej odpowiednie parametry, by uzyskać wskazany wynik.
+
+\begin{enumerate}[label=\arabic*.]
+    \item \verb|'3.21 + 2.2857142857142856 = 5.4957142857142856'|
+    \item \verb|'3.21 + 2.29 = 5.50'|
+    \item \verb|'szpak i szpak'|
+    \item \verb|'szpak i SZPAK'|
+    \item \verb|'7, 3, 1'|
+
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Wykonaj poprzednie zadanie z wykorzystaniem f-stringów zamiast \verb|format()|.
+
+
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+Za pomocą metody \verb|format()| i odpowiedniego tekstu-szablonu uzyskaj identyczne efekty, jak w poprzednim zadaniu.
+
+
+\section{Konwersja na różne układy}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Wykorzystaj funkcję \verb|int| do zamiany liczby z danego układu na dziesiętny (pamiętaj, by liczbę podać jako string).
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item $3_{3}\rightarrow \dots$
+    \item $11_{3}\rightarrow \dots$
+    \item $12_{3}\rightarrow \dots$
+    \item $22_{3}\rightarrow \dots$
+
+    \item $10_{2}\rightarrow \dots$
+    \item $11_{2}\rightarrow \dots$
+    \item $111_{2}\rightarrow \dots$
+    \item $101_{2}\rightarrow \dots$
+    \item $1111_{2}\rightarrow \dots$
+    \item $1000_{2}\rightarrow \dots$
+    \item $10000_{2}\rightarrow \dots$
+
+    \item $10_{8}\rightarrow \dots$
+    \item $11_{8}\rightarrow \dots$
+    \item $17_{8}\rightarrow \dots$
+    \item $77_{8}\rightarrow \dots$
+    \item $22_{8}\rightarrow \dots$
+
+    \item $\mathrm{A_{16}}\rightarrow \dots$
+    \item $\mathrm{B_{16}}\rightarrow \dots$
+    \item $\mathrm{F_{16}}\rightarrow \dots$
+    \item $\mathrm{FF_{16}}\rightarrow \dots$
+
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Sprawdź, czy prawdziwe są równości. Tam gdzie można, wpisz liczbę bezpośrednio w podanym systemie liczbowym.
+
+\begin{multicols}{2}
+\begin{enumerate}[label=\arabic*.]
+    \item $1010_{2} = 10$
+    \item $11_{2} = 10_{3}$
+    \item $11_{16} = 21_{8}$
+    \item $\mathrm{A_{16}} = 10$
+    \item $\mathrm{A_{16}} = 12_{8}$
+
+    \item $11_{4} = 4$
+    \item $11_{4} = 5$
+    \item $4_{5} = 4$
+    \item $4_{5} = 100_{2}$
+
+    \item $\mathrm{FA_{16}} = 235$
+    \item $\mathrm{AA_{16}} = 170$
+    \item $\mathrm{E_{16}} = 86_{8}$
+
+\end{enumerate}
+\end{multicols}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Podaj reprezentacje danych liczb w układach szesnastkowym, ósemkowym i dwójkowym:
+
+\begin{tabular}{c | c | c | c}
+\textsf{dec} & \textsf{hex} & \textsf{oct} & \textsf{bin}\\\hline
+12  & C & 14 & 1100 \\\hline
+    & F &    &  \\\hline
+51  &   &    &  \\\hline
+    &   & 111 & \\\hline
+    & EE &  &   \\\hline
+    &   &   & 111111 \\\hline
+256 &   &   &   \\\hline
+    &   & 1234 &    \\\hline
+    & A1A &     &   \\
+
+\end{tabular}
+
+
+\section{Prosty import}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+Import:
+\lstset{numbers=none}
+\begin{lstlisting}
+from math import sqrt, floor, ceil, log, log2, log10, pi
+\end{lstlisting}
+Przykładowe obliczenia:
+
+\begin{multicols}{3}
+    \begin{enumerate}[label=\arabic*.]
+        \item \lstinline|print(sqrt(9))|
+        \item \lstinline|print(ceil(sqrt(8)))|
+        \item \lstinline|print(log2(8)|
+        \item $\log_{2} 8$
+        \item $\lceil{-2.7}\rceil$
+        \item $\log_{10} 0{,}1$
+        \item $\lfloor{12/3}\rfloor$
+        \item $\lceil{12/3}$
+        \item $\log_{2} 4$
+        \item $\sqrt{16}$
+        \item $\log_{2} 16$
+        \item $\lfloor{1}\rfloor$
+        \item $\lfloor{-2.7}\rfloor$
+        \item $\lfloor{12/3}\rfloor$
+        \item $\log_{10} 100$
+        \item $\log_{2} 16$
+        \item $\lceil{12/3}\rceil$
+        \item $\lceil{\pi}\rceil$
+        \item $\log_{10} 10 $
+        \item $\log_{2} 128$
+        \item $\lfloor{\pi}\rfloor$
+        \item $\log_{10} 1$
+    \end{enumerate}
+\end{multicols}
+
+
+\subsubsection{Instrukcja warunkowa}
+
+
+Wzorując się na tym, uprość warunki w następujących instrukcjach:
+
+%~ \begin{enumerate}[label=\arabic*.]
+    %~ \item \verb|if x == True:|
+    %~ \item \verb|if x != 0:|
+    %~ \item \verb|if x > 0 and x > 1:|
+    %~ \item \verb|if x < 0 or x >0:|
+    %~ \item \verb|if len(x) > 0:|
+    %~ \item \verb|if len(x) != 0:|
+    %~ \item \verb|if x != '':|
+    %~ \item \verb|if x != []:|
+    %~ \item \verb|if not x == '':|
+    %~ \item \verb|if len(x) > 0 and y in x:|
+
+%~ \end{enumerate}
+
+
+
+
+%~ TO DO ================
+
+%~ warto przeczytać również to:
+
+%~ * https://docs.python.org/3/library/stdtypes.html
+%~ * https://docs.python.org/3/library/itertools.html
+%~ * https://docs.python.org/3/library/array.html
+%~ * https://docs.python.org/3/library/bisect.html
+%~ * https://docs.python.org/3/library/collections.html
+
+%~ to pierwsze opis standardowych typów (listy, stringi, słowniki...) i są tu wymienione chyba wszystkie metody stringowe, kolejne strony to przydatne biblioteki.
+
+%~ warto byłoby większość przykładów ilustrujących przećwiczyć samodzielnie.
+
+%~ 4 sposoby na utworzenie listy liczb od 1 do 10
+
+%~ 1) list(range(1, 10))
+%~ 2) [j for j in range(1, 10)]
+%~ 3) list(j for j in range(10))
+%~ 4) [*range(1, 10)]
+
+%~ 2) i 3) to nie jest to samo. 4) jest fajny i naucz się tego: gwiazdka * służy do rozpakowywania "obiektów listopodobnych" (list, stringów i nie tylko, ale o tym kiedy indziej).
+
+%~ cztery sposoby na zamianę stringu 'wercyngetoryks' na listę:
+
+%~ 1) list('wercyngetoryks')
+%~ 2) [c for c in 'wercyngetoryks']
+%~ 3) list(c for c in 'wercyngetoryks')
+%~ 4) [*'wercyngetoryks']
+
+%~ również tutaj 2) i 3) to nie to samo i nie jest to sztuczne
+
+%~ jak z dwóch list zrobić jedną? niech a = [1, 2, 3], b = [4, 5, 6]
+
+%~ 1) a.extend(b)
+%~ 2) a + b
+%~ 3) [*a, *b]
+%~ 4) a[-1:] = b
+
+%~ są tu pewne subtelności - w 1) lista a jest rozszerzana o elementy b - a po prostu się zmienia. w 2) i 3) produkowana jest nowa lista. w 4) lista a znów jest rozszerzana o b - CZY ROZUMIESZ jak to działa?
+
+
+\section{Pętle \texttt{for} i \texttt{while}}
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Napisz pętlę \verb|for|, która z odpowiednio dobranym obiektem \verb|range()| wypisuje:
+
+\begin{enumerate}[label=\arabic*.]
+    \lstset{numbers=none}
+    \item \begin{lstlisting}
+    for j in range(1, 21):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(-5, 11):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(-15, 9):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(0, 17, 2):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(0, -17, -2):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(-3, 22, 3):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(-3, 26, 4):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(-7, 20, 2):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(7, 48, 5):
+        print(j)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(20, -12, -3):
+        print(j)
+    \end{lstlisting}
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+\lstset{numbers=none}
+\begin{enumerate}[label=\arabic*.]
+    \item \begin{lstlisting}
+    for j in range(1, 32, 2):
+        print(j)
+    \end{lstlisting}
+    Inny wariant:
+    \begin{lstlisting}
+    for j in range(16):
+        print(2*j + 1)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(11):
+        print(j ** 2)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(4, 17):
+        print(j ** 0.5)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(1, 16):
+        print((j ** 2 + 1) % 13)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    for j in range(2, 101):
+        print(3 ** (1 / j))
+    \end{lstlisting}
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} \texttt{l = [8, 14, 20, 7, 1, 8, 14, 12, 7, 14, 15, 14, 5, 11, 4]}
+\begin{enumerate}[label=\arabic*.]
+    \lstset{numbers=none}
+    \item \begin{lstlisting}
+    mx = l[0]
+    for x in l[1:]:
+        if x > mx:
+            mx = x
+    print(mx)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    mx = l[0]
+    for x in l[1:]:
+        if x < mx:
+            mx = x
+    print(mx)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    s = 0
+    for x in l:
+        s += x
+    print(s)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    s = 0
+    for x in l:
+        s += x
+    print(s / len(l))
+    \end{lstlisting}
+    Bezpieczniejsza wersja, uwzględniająca przypadek \lstinline|l = []|, byłaby taka:
+
+    \begin{lstlisting}
+    s = 0
+    for x in l:
+        s += x
+    print(s / (len(l) or 1)
+    # inny wariant powyższego: print(s / len(l) if l else 1)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    mx, dx = l[0], l[0] - 1
+    for x in l[1:]:
+        if x > mx:
+            dx, mx = mx, x
+    print(dx)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    licznik = 0
+    for x in l:
+        if x == 14:
+            licznik += 1
+    print(licznik)
+    \end{lstlisting}
+
+\end{enumerate}
+
+%~ \textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Rozwiąż zadania \thewhileloop-\thewhileloopx\ za pomocą pętli \texttt{while}. Oczywiście, nie wolno korzystać z \verb|range()|.
+
+\section{Pliki tekstowe}
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1} Wariant czwarty jest najmniej zalecany.
+
+\begin{enumerate}[label=\arabic*.]
+    \lstset{numbers=none}
+    \item \begin{lstlisting}
+    with open('dane.txt') as plik:
+        p = plik.readlines()
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    with open('dane.txt') as plik:
+        p = list(plik)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    with open('dane.txt') as plik:
+        p = [l for l in plik]
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    p = []
+    with open('dane.txt') as plik:
+        for l in plik:
+            p.append(l)
+    \end{lstlisting}
+
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+\begin{enumerate}[label=\arabic*.]
+    \lstset{numbers=none}
+    \item \begin{lstlisting}
+    with open('dane.txt') as plik:
+        print(plik.readline())
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    with open('dane.txt') as plik:
+        print(plik.readline())
+        print(plik.readline())
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    licznik = 0
+    with open('dane.txt') as plik:
+        for l in plik:
+            licznik += 1
+    print(licznik)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    dl, w = 0, ''
+    with open('dane.txt') as plik:
+        for l in plik:
+            ll = l.strip()
+            if len(ll) > dl:
+                w = ll
+                dl = len(ll)
+    print(dl)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    with open('dane.txt') as plik:
+        w = plik.readline().strip()
+        dl = len(w)
+        for l in plik:
+            ll = l.strip()
+            if len(ll) < dl:
+                w = ll
+                dl = len(ll)
+    print(dl)
+    \end{lstlisting}
+
+    \item \begin{lstlisting}
+    licznik = 0
+    with open('dane.txt') as plik:
+        for l in plik:
+            if len(l.strip()) >= 40:
+                licznik += 1
+    print(dl)
+    \end{lstlisting}
+
+\end{enumerate}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+    \lstset{numbers=none}
+    \begin{lstlisting}
+    with open('witaj.txt', 'r') as plik:
+        plik.write('Panie Janie, niech pan wstanie!\n')
+    \end{lstlisting}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+   \lstset{numbers=none}
+   \begin{lstlisting}
+    with open('witaj.txt', 'a') as plik:
+        plik.write('Panie Janie, rano wstań!\n')
+    \end{lstlisting}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+   \lstset{numbers=none}
+   \begin{lstlisting}
+    with open('iloczyny.txt', 'w') as plik:
+        for j in range(1, 10):
+            plik.write(f'{1 * j}\n')
+    \end{lstlisting}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+   \lstset{numbers=none}
+   \begin{lstlisting}
+    with open('iloczyny.txt', 'w') as plik:
+        for i in range(1, 10):
+            for j in range(1, 10):
+                plik.write(f'{i * j}\n')
+    \end{lstlisting}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+   \lstset{numbers=none}
+   \begin{lstlisting}
+    with open('uczniowie.txt', 'w') as plik:
+        plik.write('imię nazwisko klasa\n')
+        plik.write('Anna Zielińska 3a\n')
+        plik.write('Adam Pawłowski 3b\n')
+        plik.write('Paulina Stefaniak 3d\n')
+   \end{lstlisting}
+
+\textbf{\arabic{zadanie}.}\addtocounter{zadanie}{1}
+   \lstset{numbers=none}
+   \begin{lstlisting}
+    with open('gwiazdki.txt', 'w') as plik:
+        for j in range(1, 101):
+            plik.write(f'{j * "*"}\n')
+   \end{lstlisting}
+
+\end{document}
